@@ -17,9 +17,3 @@
 * Admin
 * Supervisor
 * Volunteer
-
-## Use cases
-1. Supervisor scans volunteer bar code to checkin
-2. Supervisor scans volunteer bar code to checkout
-3. Volunteer checkins in using geo
-4. Volunteer checkins in using geo
