@@ -1,5 +1,6 @@
-# CrossCheck
+# CrossCheck [![Build Status](https://travis-ci.org/yohanmishkin/crosscheck.svg?branch=master)](https://travis-ci.org/yohanmishkin/crosscheck)
 ---
+## Models
 * Disaster
 * Work site
 * User
@@ -13,12 +14,12 @@
 	* User
 	* Datetime
 
-*Roles
+* Roles
 	* Admin
 	* Supervisor
 	* Volunteer
 ---
-**Use cases**
+## Use cases
 1. Supervisor scans volunteer bar code to checkin
 2. Supervisor scans volunteer bar code to checkout
 3. Volunteer checkins in using geo
