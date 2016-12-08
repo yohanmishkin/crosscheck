@@ -26,11 +26,13 @@
 
   .page-header {
     @extend .full-row;
-    text-align: center;
+    h2 {
+      text-align: center;
+    }
   }
 
   .work-area {
-
+    text-align: center;
   }
 }
 

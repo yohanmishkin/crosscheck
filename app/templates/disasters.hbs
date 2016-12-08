@@ -3,7 +3,12 @@
 </div>
 
 <div class="work-area">
-	{{link-to 'create new' 'disasters.new' class='test-disasters-create-new'}}
-</div>
+	<ul class="test-disasters-list">
+	{{#each model as |disaster|}}
+		{{!link-to disaster.name 'disasters.edit' disaster tagName='li'}}
+		<li>{{disaster.name}}</li>
+	{{/each}}
+	</ul>
 
-{{outlet}}
+	{{outlet}}
+</div>
