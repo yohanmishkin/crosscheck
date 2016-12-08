@@ -5,8 +5,12 @@
 <div class="work-area">
 	<ul class="test-disasters-list">
 	{{#each model as |disaster|}}
-		{{!link-to disaster.name 'disasters.edit' disaster tagName='li'}}
-		<li>{{disaster.name}}</li>
+		{{link-to
+			disaster.name
+			'disasters.edit'
+			disaster
+			tagName='li'
+			class='disaster'}}
 	{{/each}}
 	</ul>
 

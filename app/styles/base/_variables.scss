@@ -3,7 +3,7 @@ $medium-screen: 600px;
 $large-screen: 900px;
 
 // Typography
-$base-font-family: "Patua One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $heading-font-family: $base-font-family;
 
 // Font Sizes
@@ -20,14 +20,22 @@ $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
 // Colors
-$blue: #1565c0;
-$dark-gray: #333;
+$blue: shade(#84B1ED, 10%);
+$dark-gray: shade(#566270, 20%);
 $medium-gray: #999;
 $light-gray: #ddd;
+$green: #8CD790;
+$yellow: #FBFFB9;
+$orange: #FDD692;
+$red-orange: #EC7357;
+$red: #ff7473;
+$brown: #754F44;
+
 
 // Font Colors
 $base-font-color: $dark-gray;
 $action-color: $blue;
+$header-font-color: shade($base-font-color, 40%);
 
 // Border
 $base-border-color: $light-gray;

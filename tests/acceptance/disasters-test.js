@@ -29,7 +29,7 @@ test('create new disaster', function(assert) {
 
 	andThen(() => {
 		assert.equal(find('.test-disasters-list > li').length, 1, 'disaster added to the list');
-		assert.equal(find('.test-disasters-list > li:first').text(), 'Hurricane Dandy', 'disaster name seen in table');
+		assert.equal(find('.test-disasters-list > li:first').text().trim(), 'Hurricane Dandy', 'disaster name seen in table');
 		assert.equal(currentURL(), '/disasters', 'transitioned back to /disasters');
 	});
 
@@ -60,5 +60,18 @@ test('quit creating new disaster and return to existing disasters', function(ass
 
 	andThen(() => {
 		assert.equal(find('.test-disasters-list > li').length, 0, 'disaster not added to the list after escape pressed');
+	});
+});
+
+test('can edit disaster', function(assert) {
+	let disaster = server.create('disaster', { name: 'Hurricane Charles' });
+
+	visit('/disasters');
+
+	click('.test-disasters-list > li:first');
+
+	andThen(() => {
+		assert.equal(currentURL(), '/disasters/' + disaster.id, 'Navigated to edit page');
+		assert.equal(find('.test-disaster-edit-name').text(), 'Hurricane Charles', 'Name is displayed on edit page');
 	});
 });
