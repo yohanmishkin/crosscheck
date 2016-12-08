@@ -1,3 +1,5 @@
 <div class="full-row">
-	{{new-disaster-input disaster=model saveDisaster=(action 'saveDisaster')}}
+	{{new-disaster-input disaster=model 
+		saveDisaster=(action 'saveDisaster') 
+		cancelDisaster=(action 'cancelDisaster')}}
 </div>

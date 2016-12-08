@@ -7,6 +7,11 @@ export default Ember.Controller.extend({
 			disaster.save().then(() => {
 				self.transitionToRoute('disasters');
 			});
+		},
+		cancelDisaster() {
+			let disaster = this.get('model');
+			disaster.deleteRecord();
+			this.transitionToRoute('disasters');
 		}
 	}
 });

@@ -5,6 +5,9 @@ export default Ember.Component.extend({
 		createDisaster() {
 			let disaster = this.get('disaster');
 			this.get('saveDisaster')(disaster);
+		},
+		cancelDisaster() {
+			this.get('cancelDisaster')();
 		}
 	}
 });

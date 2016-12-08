@@ -1,2 +1,12 @@
-{{input value=disaster.name class="disaster-input test-disaster-name-input" enter='createDisaster'}}
-<button {{action 'createDisaster'}} class="disaster-submit test-disasters-create-new-submit"><span class="arrow">save</span></button>
+{{input value=disaster.name 
+	class="disaster-input test-disaster-name-input" 
+	enter='createDisaster'
+	escape-press='cancelDisaster'}}
+<div class="disasts-new-controls">
+	<button {{action 'createDisaster'}} class="test-disasters-create-new-submit">
+		<span class="arrow">save</span>
+	</button>
+	<button {{action 'cancelDisaster'}} class="test-disasters-cancel-new">
+		<span class="">x</span>
+	</button>
+</div>
