@@ -9,7 +9,7 @@ test('visiting /disasters, no disasters', function(assert) {
   andThen(() => {
     assert.equal(currentURL(), '/disasters');
     assert.equal(find('.test-disasters-header').length, 1, 'header appears');
-    assert.equal(find('.test-disasters-create-new').length, 1, 'create new link is visible');
+    assert.equal(find('.test-disaster-create-new').length, 1, 'create new link is visible');
     assert.equal(find('.test-disasters-table > tr').length, 0, 'no disasters visible');
   });
 });
@@ -17,15 +17,15 @@ test('visiting /disasters, no disasters', function(assert) {
 test('create new disaster', function(assert) {
 	visit('/disasters');
 
-	click('.test-disasters-create-new');
+	click('.test-disaster-create-new');
 
 	andThen(() => {
-		assert.equal(find('.test-disasters-create-new').length, 0, 'create new link is hidden');
+		assert.equal(find('.test-disaster-create-new').length, 0, 'create new link is hidden');
 		assert.equal(currentURL(), '/disasters/new', 'transitioned to /disasters/new');
 	});
 
-	fillIn('.test-disaster-name-input', 'Hurricane Dandy');
-	click('.test-disasters-create-new');
+	fillIn('.test-model-name-input', 'Hurricane Dandy');
+	click('.test-model-create-new');
 
 	andThen(() => {
 		assert.equal(find('.test-disasters-list > li').length, 1, 'disaster added to the list');
@@ -33,9 +33,9 @@ test('create new disaster', function(assert) {
 		assert.equal(currentURL(), '/disasters', 'transitioned back to /disasters');
 	});
 
-	click('.test-disasters-create-new');
-	fillIn('.test-disaster-name-input', 'Hurricane Chad');
-	keyEvent('.test-disasters-create-new', 'keypress', 13);
+	click('.test-disaster-create-new');
+	fillIn('.test-model-name-input', 'Hurricane Chad');
+	keyEvent('.test-model-create-new', 'keypress', 13);
 
 	andThen(() => {
 		assert.equal(find('.test-disasters-list > li').length, 2, 'disaster added to the list using enter keypress');
@@ -45,18 +45,18 @@ test('create new disaster', function(assert) {
 test('quit creating new disaster and return to existing disasters', function(assert) {
 	visit('/disasters');
 
-	click('.test-disasters-create-new');
-	fillIn('.test-disaster-name-input', 'Hurricane Dandy');
-	click('.test-disasters-cancel-new');
+	click('.test-disaster-create-new');
+	fillIn('.test-model-name-input', 'Hurricane Dandy');
+	click('.test-model-cancel-new');
 
 	andThen(() => {
-		assert.equal(find('.test-disasters-list > li').length, 0, 'disaster not added to the list');
 		assert.equal(currentURL(), '/disasters', 'transitioned back to /disasters');
+		assert.equal(find('.test-disasters-list > li').length, 0, 'disaster not added to the list');
 	});
 
-	click('.test-disasters-create-new');
-	fillIn('.test-disaster-name-input', 'Cha cha cha');
-	keyEvent('.test-disaster-name-input', 'keyup', 27);
+	click('.test-disaster-create-new');
+	fillIn('.test-model-name-input', 'Cha cha cha');
+	keyEvent('.test-model-name-input', 'keyup', 27);
 
 	andThen(() => {
 		assert.equal(find('.test-disasters-list > li').length, 0, 'disaster not added to the list after escape pressed');

@@ -1,5 +1,5 @@
 <div class="full-row">
-	{{new-disaster-input disaster=model 
-		saveDisaster=(action 'saveDisaster') 
-		cancelDisaster=(action 'cancelDisaster')}}
+	{{crosscheck-input model=model 
+		save=(route-action 'save')
+		cancel=(route-action 'cancel')}}
 </div>
