@@ -91,4 +91,10 @@ test('can create work site', function(assert) {
 		assert.equal(find('.test-sites-list > li').length, 1, 'new site added to the site list');
 		assert.equal(find('.test-sites-list > li:first').text().trim(), 'Area 51', 'site name seen in table');
 	});
+
+	click('.test-disasters-header');
+
+	andThen(() => {
+    assert.equal(currentURL(), '/disasters', 'Clicking header returns to /disasters');
+	});
 });
