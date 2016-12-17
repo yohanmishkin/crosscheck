@@ -25,7 +25,7 @@ test('create new disaster', function(assert) {
 	});
 
 	fillIn('.test-disaster-name-input', 'Hurricane Dandy');
-	click('.test-disasters-create-new-submit');
+	click('.test-disasters-create-new');
 
 	andThen(() => {
 		assert.equal(find('.test-disasters-list > li').length, 1, 'disaster added to the list');
@@ -35,7 +35,7 @@ test('create new disaster', function(assert) {
 
 	click('.test-disasters-create-new');
 	fillIn('.test-disaster-name-input', 'Hurricane Chad');
-	keyEvent('.test-disasters-create-new-submit', 'keypress', 13);
+	keyEvent('.test-disasters-create-new', 'keypress', 13);
 
 	andThen(() => {
 		assert.equal(find('.test-disasters-list > li').length, 2, 'disaster added to the list using enter keypress');
@@ -63,7 +63,7 @@ test('quit creating new disaster and return to existing disasters', function(ass
 	});
 });
 
-test('can edit disaster', function(assert) {
+test('can create work site', function(assert) {
 	let disaster = server.create('disaster', { name: 'Hurricane Charles' });
 
 	visit('/disasters');
@@ -73,5 +73,22 @@ test('can edit disaster', function(assert) {
 	andThen(() => {
 		assert.equal(currentURL(), '/disasters/' + disaster.id, 'Navigated to edit page');
 		assert.equal(find('.test-disaster-edit-name').text(), 'Hurricane Charles', 'Name is displayed on edit page');
+		assert.equal(find('.test-disaster-create-work-site').text(), 'Create first work site', 'Work site placeholder visible');
+	});
+
+	click('.test-disaster-create-work-site');
+
+	andThen(() => {
+		assert.equal(currentURL(), '/disasters/' + disaster.id + '/sites/new', 'Redirects to new route');
+		assert.equal(find('.test-new-site-header').length, 1, 'New site header visible');
+	});
+
+	fillIn('.test-model-name-input', 'Area 51');
+	click('.test-model-create-new');
+
+	andThen(() => {
+		assert.equal(currentURL(), '/disasters/' + disaster.id, 'transitioned back to /disaster/edit');
+		assert.equal(find('.test-sites-list > li').length, 1, 'new site added to the site list');
+		assert.equal(find('.test-sites-list > li:first').text().trim(), 'Area 51', 'site name seen in table');
 	});
 });

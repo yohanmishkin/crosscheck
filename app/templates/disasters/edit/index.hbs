@@ -1,0 +1,12 @@
+{{#if model.workSites}}
+	<h4>Work sites</h4>
+	<ul class="test-sites-list">
+	{{#each model.workSites as |site|}}
+		{{!link-to site.name 'sites.edit' site tagName='li' class='site'}}
+		<li>{{site.name}}</li>
+	{{/each}}
+	</ul>
+	{{link-to 'Add another work site' 'disasters.edit.sites.new' model class="test-disaster-create-work-site"}}
+{{else}}
+	{{link-to 'Create first work site' 'disasters.edit.sites.new' model class="test-disaster-create-work-site"}}
+{{/if}}

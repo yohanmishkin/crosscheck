@@ -1,0 +1,12 @@
+{{input value=model.name 
+	class="model-input test-model-name-input" 
+	enter='create'
+	escape-press='cancel'}}
+<div class="create-new-controls">
+	<button {{action 'create'}} class="test-model-create-new submit">
+		save
+	</button>
+	<button {{action 'cancel'}} class="test-model-cancel-new cancel">
+		x
+	</button>
+</div>
