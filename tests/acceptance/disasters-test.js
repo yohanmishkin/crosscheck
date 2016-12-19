@@ -72,14 +72,14 @@ test('can create work site', function(assert) {
 
 	andThen(() => {
 		assert.equal(currentURL(), '/disasters/' + disaster.id, 'Navigated to edit page');
-		assert.equal(find('.test-disaster-edit-name').text(), 'Hurricane Charles', 'Name is displayed on edit page');
+		assert.equal(find('.test-disaster-edit-name').text().trim(), 'Hurricane Charles', 'Name is displayed on edit page');
 		assert.equal(find('.test-disaster-create-work-site').text(), 'Create first work site', 'Work site placeholder visible');
 	});
 
 	click('.test-disaster-create-work-site');
 
 	andThen(() => {
-		assert.equal(currentURL(), '/disasters/' + disaster.id + '/sites/new', 'Redirects to new route');
+		assert.equal(currentURL(), `/disasters/${disaster.id}/sites/new`, 'Redirects to new route');
 		assert.equal(find('.test-new-site-header').length, 1, 'New site header visible');
 	});
 
@@ -87,7 +87,7 @@ test('can create work site', function(assert) {
 	click('.test-model-create-new');
 
 	andThen(() => {
-		assert.equal(currentURL(), '/disasters/' + disaster.id, 'transitioned back to /disaster/edit');
+		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'transitioned back to /disaster/edit');
 		assert.equal(find('.test-sites-list > li').length, 1, 'new site added to the site list');
 		assert.equal(find('.test-sites-list > li:first').text().trim(), 'Area 51', 'site name seen in table');
 	});
@@ -96,5 +96,19 @@ test('can create work site', function(assert) {
 
 	andThen(() => {
     assert.equal(currentURL(), '/disasters', 'Clicking header returns to /disasters');
+	});
+});
+
+test('can edit disaster name', function(assert) {
+	let disaster = server.create('disaster', { name: 'Hurricane Charles' });
+	visit(`/disasters/${disaster.id}`);
+
+	triggerEvent('.test-disaster-edit-name', 'dblclick');
+	fillIn('.test-edit-input', 'Earthquake Charles');
+	keyEvent('.test-edit-input', 'keyup', 13);
+
+	andThen(() => {
+		assert.equal(find('.test-disasters-list > li:first').text(), 'Earthquake Charles', 'Disaster was updated');
+		assert.equal(server.db.disasters[0].name, 'Earthquake Charles', 'Disaster was saved');
 	});
 });

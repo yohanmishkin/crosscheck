@@ -1,4 +1,3 @@
-<!-- Exit button -->
-<h3 class="test-disaster-edit-name disaster">{{model.name}}</h3>
+{{inline-edit value=model.name tagName='h3' class="test-disaster-edit-name disaster" save=(route-action 'save')}}
 
 {{outlet}}
