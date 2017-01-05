@@ -117,6 +117,7 @@ skip('can upload disaster volunteer roster', function(assert) {
 	let disaster = server.create('disaster', { name: 'Hurricane Charles' });
 	visit(`/disasters/${disaster.id}`);
 
+	// Find way to mock roster upload /api/disasters/:id/upload
 	let roster = ['Charles Beasely Sines, MLJ4567, Disaster, Boss Lday, Putnam Station'];
 	uploadFile('.test-roster-upload', roster);
 

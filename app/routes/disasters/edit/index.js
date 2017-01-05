@@ -7,6 +7,8 @@ export default Ember.Route.extend({
 	actions: {
 		uploadRoster(event) {
 			console.log(event);
+			// Post file to API /disasters/:id/upload
+			// Reload store
 		}
 	}
 });
