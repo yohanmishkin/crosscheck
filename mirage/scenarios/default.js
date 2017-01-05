@@ -1,6 +1,9 @@
 export default function(server) {
 
 	server.createList('disaster', 6);
+  var disaster = server.create('disaster', { name: 'Hurricane Daniel'});
+  server.createList('workSite', 3, { disaster });
+
   /*
     Seed your development database using your factories.
     This data will not be loaded in your tests.

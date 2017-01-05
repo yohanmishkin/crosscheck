@@ -62,5 +62,9 @@ a {
         @include reset-display;
       }
     }
+
+    .disaster {
+      cursor: pointer;
+    }
   }
 }

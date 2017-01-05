@@ -5,6 +5,7 @@ export default function() {
   this.get('/disasters/:id');
   this.patch('/disasters/:id');
   this.post('/work-sites');
+  this.get('/work-sites/:id');
 
   // These comments are here to help you get started. Feel free to delete them.
 
