@@ -22,7 +22,9 @@
     "andThen",
     "currentURL",
     "currentPath",
-    "currentRouteName"
+    "currentRouteName",
+    "uploadFile",
+    "upload-file"
   ],
   "node": false,
   "browser": false,
