@@ -51,12 +51,14 @@ a {
     .full-row {
       @include span-columns(12);
       .model-input {
-        @include span-columns(8 of 12);
+        // @include span-columns(8 of 12);
         @include reset-display;
+
+        text-align: center;
       }
 
       .create-new-controls {
-        @include span-columns(4 of 12);
+        // @include span-columns(4 of 12);
         @include reset-display;
       }
     }

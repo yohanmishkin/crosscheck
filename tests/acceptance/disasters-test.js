@@ -84,12 +84,14 @@ test('can create work site', function(assert) {
 	});
 
 	fillIn('.test-model-name-input', 'Area 51');
-	click('.test-model-create-new');
+	fillIn('.test-worksite-location-input', '12 Candy Lane');
+	click('.test-worksite-save');
 
 	andThen(() => {
 		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'transitioned back to /disaster/edit');
 		assert.equal(find('.test-sites-list > li').length, 1, 'new site added to the site list');
 		assert.equal(find('.test-sites-list > li:first').text().trim(), 'Area 51', 'site name seen in table');
+		assert.equal(server.db.workSites[0].location, '12 Candy Lane', 'site location was saved');
 	});
 
 	click('.test-disasters-header');

@@ -5,7 +5,7 @@ export default Ember.Route.extend({
 		return this.get('store').createRecord('workSite');
 	},
 	actions: {
-		save(site) {
+		saveWorkSite(site) {
 			let self = this;
 			let disaster = this.modelFor('disasters.edit');
 			disaster.get('workSites').pushObject(site);
