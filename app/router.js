@@ -15,6 +15,7 @@ Router.map(function() {
       });
     });
   });
+  this.route('checkin');
 });
 
 export default Router;
