@@ -1,3 +1,4 @@
 <div class="work-area">
-    {{crosscheck-checkin-input}}
+    {{input value=model.memberNumber class='checkin-member-number'}}
+    <button {{action (route-action 'save' model)}} class="checkin-submit">Check In</button>
 </div>
