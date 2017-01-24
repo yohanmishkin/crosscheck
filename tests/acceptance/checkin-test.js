@@ -9,12 +9,9 @@ test('Volunteer can checkin', function(assert) {
     .visit()
     .memberNumber('121212')
     .submit();
-
+    
   andThen(function() {
-    let db = server.schema.db;
-    let checkin = db.checkins[0];
-    assert.ok(checkin, 'checkin logged');
-    assert.ok(checkin.geoLocation, 'checkin location logged');
+    assert.equal(server.db.checkins.length, 1, 'checkin created');
     assert.equal(find('.worksites-list > tr').length, 1, 'Worksite visible');
   });
 });
