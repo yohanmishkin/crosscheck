@@ -110,7 +110,7 @@ test('can edit disaster name', function(assert) {
 	keyEvent('.test-edit-input', 'keyup', 13);
 
 	andThen(() => {
-		assert.equal(find('.test-disasters-list > li:first').text(), 'Earthquake Charles', 'Disaster was updated');
+		assert.equal(find('.test-disaster-edit-name').text().trim(), 'Earthquake Charles', 'Disaster was updated');
 		assert.equal(server.db.disasters[0].name, 'Earthquake Charles', 'Disaster was saved');
 	});
 });

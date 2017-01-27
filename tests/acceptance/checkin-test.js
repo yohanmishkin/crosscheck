@@ -9,6 +9,10 @@ const { Service } = Ember;
 moduleForAcceptance('Acceptance | checkin');
 
 test('Volunteer can checkin', function(assert) {
+  
+  var disaster = server.create('disaster', { name: 'Hurricane Daniel'});
+  server.createList('workSite', 3, { disaster });
+
   let mockCoordinates = {
     coords: {
       latitude:40.7686973,

@@ -1,1 +1,12 @@
-{{link-to 'Create New' 'disasters.new' class='test-disaster-create-new'}}
+<ul class="test-disasters-list">
+	{{#each model as |disaster|}}
+		{{link-to
+			disaster.name
+			'disasters.edit'
+			disaster
+			tagName='li'
+			class='disaster'}}
+	{{/each}}
+    
+    {{link-to 'Create New' 'disasters.new' class='test-disaster-create-new'}}
+</ul>
