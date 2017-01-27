@@ -8,6 +8,7 @@
 	* Bar code
 * Checkin
 	* User
+	* Location
 	* Datetime
 * Checkout
 	* User

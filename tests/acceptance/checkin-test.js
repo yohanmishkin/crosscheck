@@ -32,6 +32,5 @@ test('Volunteer can checkin', function(assert) {
 
   andThen(function() {
     assert.equal(server.db.checkins.length, 1, 'checkin created');
-    // assert.equal(find('.worksites-list > tr').length, 1, 'Worksite visible');
   });
 });
