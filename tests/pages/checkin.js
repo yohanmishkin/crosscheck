@@ -6,7 +6,7 @@ import {
 } from 'ember-cli-page-object';
 
 export default create({
-  visit: visitable('/checkin'),
+  visit: visitable(`/disasters/:disaster_id/checkin`),
   memberNumber: fillable('.checkin-member-number'),
   submit: clickable('.checkin-submit')
 });

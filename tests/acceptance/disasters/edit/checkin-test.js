@@ -6,7 +6,18 @@ import { register } from 'ember-owner-test-utils/test-support/register';
 
 const { Service } = Ember;
 
-moduleForAcceptance('Acceptance | checkin');
+moduleForAcceptance('Acceptance | disasters/edit/checkin');
+
+test('visiting /disasters/edit/checkin', function(assert) {
+  
+  let disaster = server.create('disaster');
+    
+  page.visit({ disaster_id: disaster.id });
+
+  andThen(function() {
+    assert.equal(currentURL(), `/disasters/${disaster.id}/checkin`, 'Visited correct URL');
+  });
+});
 
 test('Volunteer can checkin', function(assert) {
   
@@ -30,7 +41,7 @@ test('Volunteer can checkin', function(assert) {
   }));
 
   page
-    .visit()
+    .visit({ disaster_id: disaster.id })
     .memberNumber('121212')
     .submit();
 
