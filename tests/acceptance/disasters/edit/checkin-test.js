@@ -11,8 +11,9 @@ moduleForAcceptance('Acceptance | disasters/edit/checkin');
 test('visiting /disasters/edit/checkin', function(assert) {
   
   let disaster = server.create('disaster');
-    
-  page.visit({ disaster_id: disaster.id });
+
+  visit(`disasters/${disaster.id}`);
+  click('.test-disaster-checkin');
 
   andThen(function() {
     assert.equal(currentURL(), `/disasters/${disaster.id}/checkin`, 'Visited correct URL');
