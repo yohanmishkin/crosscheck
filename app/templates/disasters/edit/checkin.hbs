@@ -1,4 +1,4 @@
-<div class="work-area">
-    {{input value=model.memberNumber class='checkin-member-number'}}
+<div class="full-row">
+    {{input value=model.memberNumber placeholder='Member #' class='checkin-member-number model-input'}}
     <button {{action (route-action 'save' model)}} class="checkin-submit">Check In</button>
 </div>

@@ -23,6 +23,10 @@ a {
 .container {
   @include outer-container;
 
+  .wrapper {
+    padding: 0 2em;
+  }
+
   .page-header {
     @extend .full-row;
     h2 {
