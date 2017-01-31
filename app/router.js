@@ -11,9 +11,8 @@ Router.map(function() {
     this.route('new');
     this.route('edit', { path: '/:disaster_slug' }, function() {
       this.route('checkin');
-      this.route('sites', function() {
-        this.route('new');
-      });
+      this.route('new', { path: '/sites/new' });
+      this.route('sites', { path: '/:workSite_slug' });
       // this.route('edit', { path: '/:siteSlug' });
     });
   });

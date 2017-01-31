@@ -22,7 +22,7 @@ test('visiting /disasters/edit/checkin', function(assert) {
 
 test('Volunteer can checkin', function(assert) {
   
-  var disaster = server.create('disaster', { name: 'Hurricane Daniel'});
+  let disaster = server.create('disaster', { name: 'Hurricane Daniel'});
   server.createList('workSite', 3, { disaster });
 
   let mockCoordinates = {

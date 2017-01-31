@@ -6,9 +6,9 @@
 		<li>{{site.name}}</li>
 	{{/each}}
 	</ul>
-	{{link-to 'Add another work site' 'disasters.edit.sites.new' model class="test-disaster-create-work-site"}}
+	{{link-to 'Add another work site' 'disasters.edit.new' model class="test-disaster-create-work-site"}}
 {{else}}
-	{{link-to 'Create first work site' 'disasters.edit.sites.new' model class="test-disaster-create-work-site"}}
+	{{link-to 'Create first work site' 'disasters.edit.new' model class="test-disaster-create-work-site"}}
 {{/if}}
 {{roster-uploader}}
 {{link-to 'Check in' 'disasters.edit.checkin' model class='test-disaster-checkin'}}
