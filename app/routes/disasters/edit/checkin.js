@@ -12,7 +12,9 @@ export default Ember.Route.extend({
             this.get('geolocation').getLocation().then(() => {
                 let location = this.get('geolocation.currentLocation');
                 checkin.set('geoLocation', location);
-                checkin.save();
+                checkin.save().then(() => {
+                    this.transitionTo('disasters.edit', this.modelFor('disasters.edit').get('slug'));
+                });
             }, (reason) => {
                 console.log(`Geolocation failed: ${reason}`);
             });
