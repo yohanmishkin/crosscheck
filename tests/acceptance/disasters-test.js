@@ -35,7 +35,7 @@ test('create new disaster', function(assert) {
 
 	click('.test-disaster-create-new');
 	fillIn('.test-model-name-input', 'Hurricane Chad');
-	keyEvent('.test-model-create-new', 'keypress', 13);
+	keyEvent('.test-model-name-input', 'keyup', 13);
 
 	andThen(() => {
 		assert.equal(find('.test-disasters-list > li').length, 2, 'disaster added to the list using enter keypress');
