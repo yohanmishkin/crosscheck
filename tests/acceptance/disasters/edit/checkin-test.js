@@ -24,18 +24,15 @@ test('Volunteer can checkin', function(assert) {
   
   let disaster = server.create('disaster', { name: 'Hurricane Daniel'});
 
-  let mockCoordinates = {
-    coords: {
-      latitude:40.7686973,
-      longitude:-73.9918181
-    },
-    timestamp: 1234
+  let coords = {
+    latitude:40.7686973,
+    longitude:-73.9918181
   };
 
   register(this, 'service:geolocation', Service.extend({
     getLocation() {
       return new Ember.RSVP.Promise((resolve) => { 
-        resolve({Position: mockCoordinates});
+        resolve({coords});
       });
     }
   }));
@@ -46,6 +43,10 @@ test('Volunteer can checkin', function(assert) {
     .submit();
 
   andThen(function() {
-    assert.equal(server.db.checkins.length, 1, 'checkin created');
+    let volunteer = server.db.volunteers[0];
+    assert.equal(volunteer.memberNumber, 121212, 'Volunteer member number saved');
+    assert.equal(volunteer.latitude, 40.7686973, 'Volunteer latitude saved');
+    assert.equal(volunteer.longitude, -73.9918181, 'Volunteer longitude saved');
+    assert.equal(volunteer.isCheckedIn, true, 'Volunteer is checked in');
   });
 });

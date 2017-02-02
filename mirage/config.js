@@ -8,7 +8,7 @@ export default function() {
   this.post('/work-sites');
   this.get('/work-sites/:id');
 
-  this.post('/checkins');
+  this.post('/volunteers');
 
   // These comments are here to help you get started. Feel free to delete them.
 
