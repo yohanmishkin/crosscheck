@@ -1,7 +1,7 @@
 export default function(server) {
 
 	server.createList('disaster', 6);
-  var disaster = server.create('disaster', { name: 'Hurricane Daniel'});
+  var disaster = server.create('disaster', { name: 'Hurricane Daniel', slug: 'hurricane-daniel' });
   server.createList('workSite', 3, { disaster });
 
   /*

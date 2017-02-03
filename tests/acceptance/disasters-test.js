@@ -68,10 +68,10 @@ test('can create work site', function(assert) {
 
 	visit('/disasters');
 
-	click('.test-disasters-list > li:first');
+	click('.test-disasters-list > li > a:first');
 
 	andThen(() => {
-		assert.equal(currentURL(), '/disasters/hurricane-charles', 'Navigated to edit page');
+		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'Navigated to edit page');
 		assert.equal(find('.test-disaster-edit-name').text().trim(), 'Hurricane Charles', 'Name is displayed on edit page');
 		assert.equal(find('.test-disaster-create-work-site').text(), 'Create first work site', 'Work site placeholder visible');
 	});
@@ -79,7 +79,7 @@ test('can create work site', function(assert) {
 	click('.test-disaster-create-work-site');
 
 	andThen(() => {
-		assert.equal(currentURL(), `/disasters/hurricane-charles/sites/new`, 'Redirects to new route');
+		assert.equal(currentURL(), `/disasters/${disaster.id}/sites/new`, 'Redirects to new route');
 		assert.equal(find('.test-new-site-header').length, 1, 'New site header visible');
 	});
 
@@ -97,7 +97,7 @@ test('can create work site', function(assert) {
 	click('.test-disasters-header');
 
 	andThen(() => {
-    assert.equal(currentURL(), '/disasters', 'Clicking header returns to /disasters');
+		assert.equal(currentURL(), '/disasters', 'Clicking header returns to /disasters');
 	});
 });
 

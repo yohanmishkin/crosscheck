@@ -14,7 +14,7 @@ export default Ember.Route.extend({
                 checkin.set('longitude', loc.coords.longitude);
                 checkin.set('isCheckedIn', true);
                 checkin.save().then(() => {
-                    this.transitionTo('disasters.edit', this.modelFor('disasters.edit').get('slug'));
+                    this.transitionTo('disasters.edit', this.modelFor('disasters.edit').get('id'));
                 });
             }, (reason) => {
                 console.log(`Geolocation failed: ${reason}`);

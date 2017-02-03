@@ -2,7 +2,10 @@
 	<h4>Work sites</h4>
 	<ul class="test-sites-list">
 	{{#each model.workSites as |site|}}
-		{{link-to site.name 'disasters.edit.site' site tagName='li' class='test-work-site-link site'}}
+		<li>
+			{{link-to site.name 'disasters.edit.site' site.id class='test-work-site-link site'}}
+			<span class="badge-success test-work-site-checkins">{{if site.hasCheckins site.checkins.length "-"}}</span>
+		</li>
 	{{/each}}
 	</ul>
 	{{link-to 'Add another work site' 'disasters.edit.new' model class="test-disaster-create-work-site"}}

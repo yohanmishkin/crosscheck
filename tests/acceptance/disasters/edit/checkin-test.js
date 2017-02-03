@@ -48,5 +48,7 @@ test('Volunteer can checkin', function(assert) {
     assert.equal(volunteer.latitude, 40.7686973, 'Volunteer latitude saved');
     assert.equal(volunteer.longitude, -73.9918181, 'Volunteer longitude saved');
     assert.equal(volunteer.isCheckedIn, true, 'Volunteer is checked in');
+    assert.equal(currentURL(), `/disasters/${disaster.id}`, 'Redirects to disaster');
+    assert.equal(find('.test-work-site-checkins').text(), 1, 'Checkin counter badge updated');
   });
 });
