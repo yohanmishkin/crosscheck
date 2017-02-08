@@ -20,7 +20,7 @@ test('visiting /disasters/edit/checkin', function(assert) {
   });
 });
 
-test('Volunteer can checkin', function(assert) {
+test('Volunteer can check into disaster', function(assert) {
   
   let disaster = server.create('disaster', { name: 'Hurricane Daniel'});
 
@@ -49,6 +49,5 @@ test('Volunteer can checkin', function(assert) {
     assert.equal(volunteer.longitude, -73.9918181, 'Volunteer longitude saved');
     assert.equal(volunteer.isCheckedIn, true, 'Volunteer is checked in');
     assert.equal(currentURL(), `/disasters/${disaster.id}`, 'Redirects to disaster');
-    assert.equal(find('.test-work-site-checkins').text(), 1, 'Checkin counter badge updated');
   });
 });

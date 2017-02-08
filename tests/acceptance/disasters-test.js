@@ -90,7 +90,7 @@ test('can create work site', function(assert) {
 	andThen(() => {
 		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'transitioned back to /disaster/edit');
 		assert.equal(find('.test-sites-list > li').length, 1, 'new site added to the site list');
-		assert.equal(find('.test-sites-list > li:first').text().trim(), 'Area 51', 'site name seen in table');
+		assert.equal(find('.test-sites-list > li > a:first').text().trim(), 'Area 51', 'site name seen in table');
 		assert.equal(server.db.workSites[0].location, '12 Candy Lane', 'site location was saved');
 	});
 

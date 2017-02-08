@@ -8,12 +8,14 @@ export default Ember.Route.extend({
     },
     
     actions: {
-        save(checkin) {
+        save(volunteer) {
             this.get('geolocation').getLocation().then((loc) => {
-                checkin.set('latitude', loc.coords.latitude);
-                checkin.set('longitude', loc.coords.longitude);
-                checkin.set('isCheckedIn', true);
-                checkin.save().then(() => {
+                volunteer.set('latitude', loc.coords.latitude);
+                volunteer.set('longitude', loc.coords.longitude);
+                volunteer.set('isCheckedIn', true);
+                // let workSite = this.modelFor('disasters.edit.site');
+                // volunteer.set('workSite', workSite);
+                volunteer.save().then(() => {
                     this.transitionTo('disasters.edit', this.modelFor('disasters.edit').get('id'));
                 });
             }, (reason) => {
