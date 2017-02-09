@@ -12,7 +12,9 @@ Router.map(function() {
     this.route('edit', { path: '/:disaster_id' }, function() {
       this.route('checkin', { path: '/checkin' });
       this.route('new', { path: '/sites/new' });
-      this.route('site', { path: '/sites/:workSite_id' });
+      this.route('site', { path: '/sites/:workSite_id' }, function() {
+        this.route('checkin');
+      });
     });
   });
 });

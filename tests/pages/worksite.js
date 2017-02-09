@@ -1,10 +1,10 @@
 import {
   create,
-  visitable
+  visitable,
+  clickable
 } from 'ember-cli-page-object';
 
 export default create({
-  visit: visitable('/'),
-  checkin: fillIn('.test-checkin'),
-  save: click
+  visit: visitable('/disasters/:disaster_id/sites/:workSite_id'),
+  checkin: clickable('.test-worksite-checkin')
 });
