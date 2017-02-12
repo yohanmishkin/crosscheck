@@ -73,10 +73,10 @@ test('can create work site', function(assert) {
 	andThen(() => {
 		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'Navigated to edit page');
 		assert.equal(find('.test-disaster-edit-name').text().trim(), 'Hurricane Charles', 'Name is displayed on edit page');
-		assert.equal(find('.test-disaster-create-work-site').text(), 'Create first work site', 'Work site placeholder visible');
+		assert.equal(find('.test-disaster-create-site').text(), 'Create first work site', 'Work site placeholder visible');
 	});
 
-	click('.test-disaster-create-work-site');
+	click('.test-disaster-create-site');
 
 	andThen(() => {
 		assert.equal(currentURL(), `/disasters/${disaster.id}/sites/new`, 'Redirects to new route');
@@ -84,14 +84,14 @@ test('can create work site', function(assert) {
 	});
 
 	fillIn('.test-model-name-input', 'Area 51');
-	fillIn('.test-worksite-location-input', '12 Candy Lane');
-	click('.test-worksite-save');
+	fillIn('.test-site-location-input', '12 Candy Lane');
+	click('.test-site-save');
 
 	andThen(() => {
 		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'transitioned back to /disaster/edit');
 		assert.equal(find('.test-sites-list > li').length, 1, 'new site added to the site list');
 		assert.equal(find('.test-sites-list > li > a:first').text().trim(), 'Area 51', 'site name seen in table');
-		assert.equal(server.db.workSites[0].location, '12 Candy Lane', 'site location was saved');
+		assert.equal(server.db.sites[0].location, '12 Candy Lane', 'site location was saved');
 	});
 
 	click('.test-disasters-header');

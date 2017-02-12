@@ -25,52 +25,52 @@ a {
 
   .wrapper {
     padding: 0 2em;
-  }
 
-  .page-header {
-    @extend .full-row;
-    h2 {
-      text-align: center;
-      font-size: 2em;
-      margin-top: 15px;
-      cursor: pointer;
-    }
-  }
-
-  .work-area {
-    text-align: center;
-
-    ul {
-      padding-bottom: 15px;
-    }
-
-    li {
-      font-size: 1.5em;
-    }
-
-    h3 {
-      font-size: 2em;
-    }
-
-    .full-row {
-      @include span-columns(12);
-      .model-input {
-        // @include span-columns(8 of 12);
-        @include reset-display;
-
+    .page-header {
+      @extend .full-row;
+      h2 {
         text-align: center;
-      }
-
-      .create-new-controls {
-        // @include span-columns(4 of 12);
-        @include reset-display;
+        font-size: 2em;
+        margin-top: 15px;
+        cursor: pointer;
       }
     }
 
-    .disaster, .site {
-      cursor: pointer;
+    .work-area {
+      text-align: center;
+
+      ul {
+        padding-bottom: 15px;
+      }
+
+      li {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        font-size: 2em;
+      }
+
+      .full-row {
+        @include span-columns(12);
+        .model-input {
+          // @include span-columns(8 of 12);
+          @include reset-display;
+
+          text-align: center;
+        }
+
+        .create-new-controls {
+          // @include span-columns(4 of 12);
+          @include reset-display;
+        }
+      }
+
+      .disaster, .site {
+        cursor: pointer;
+      }
     }
-  }
+  }  
 }
 
 .checkin-input {

@@ -1,34 +1,37 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance';
 import page from 'crosscheck/tests/pages/disaster';
-import workSitePage from 'crosscheck/tests/pages/worksite';
+import sitePage from 'crosscheck/tests/pages/site';
 
-moduleForAcceptance('Acceptance | disasters/edit/worksites');
+moduleForAcceptance('Acceptance | disasters/edit/sites');
 
-test('Can navigate to worksite page', function(assert) {
+test('Can navigate to site page', function(assert) {
   let disaster = server.create('disaster', { name: 'Hurricane Daniel', slug: 'hurricane-daniel' });
-  let site = server.create('workSite', { name: 'Ticonderoga', location: '12 Candy Lane', disaster });
+  let site = server.create('site', { name: 'Ticonderoga', location: '12 Candy Lane', disaster });
 
   page
     .visit({disaster_id: disaster.id})
-    .worksite();
+    .site();
   
   andThen(function() {
-    assert.equal(currentURL(), `/disasters/${disaster.id}/sites/${site.id}`, 'Navigated to worksite page');
-    assert.equal(find('.test-work-site-name').text(), 'Ticonderoga', 'Worksite name displayed');
-    assert.equal(find('.test-work-site-location').text(), '12 Candy Lane', 'Worksite location displayed');
+    assert.equal(currentURL(), `/disasters/${disaster.id}/sites/${site.id}`, 'Navigated to site page');
+    assert.equal(find('.test-site-name').text(), 'Ticonderoga', 'site name displayed');
+    assert.equal(find('.test-site-location').text(), '12 Candy Lane', 'site location displayed');
   });
 });
 
-test('Volunteer can check into worksite', function(assert) {
+test('Volunteer can check into site', function(assert) {
   let disaster = server.create('disaster', { name: 'Hurricane Daniel', slug: 'hurricane-daniel' });
-  let site = server.create('workSite', { name: 'Ticonderoga', location: '12 Candy Lane', disaster });
+  let site = server.create('site', { name: 'Ticonderoga', location: '12 Candy Lane', disaster });
 
-  workSitePage
-    .visit({disaster_id: disaster.id, workSite_id: site.id})
+  sitePage
+    .visit({disaster_id: disaster.id, site_id: site.id})
     .checkin();
 
   andThen(function() {
-    assert.equal(currentURL(), `/disasters/${disaster.id}/sites/${site.id}/checkin`, 'Navigated to worksite checkin page');
+    assert.equal(currentURL(), `/disasters/${disaster.id}/sites/${site.id}/checkin`, 'Navigated to site checkin page');
   });
+
+  fillIn('.checkin-member-number', '121212');
+  click('.checkin-submit');
 });

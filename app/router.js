@@ -7,13 +7,14 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('disasters', function() {
-    this.route('new');
-    this.route('edit', { path: '/:disaster_id' }, function() {
-      this.route('checkin', { path: '/checkin' });
-      this.route('new', { path: '/sites/new' });
-      this.route('site', { path: '/sites/:workSite_id' }, function() {
-        this.route('checkin');
+  this.route('disasters', { path: '/' }, function() {
+    this.route('new', { path: 'disasters/new' });
+    this.route('disaster', { path: 'disasters/:disaster_id' }, function() {
+      this.route('sites', function() {
+        this.route('new');
+        this.route('site', { path: ':site_id' }, function() {
+          this.route('checkin');
+        });
       });
     });
   });

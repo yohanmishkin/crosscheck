@@ -1,5 +1,11 @@
 <div class="container">
 	<div class="wrapper">
-		{{outlet}}
+		<div class="page-header">
+			{{link-to 'Crosscheck' 'disasters' tagName='h2' class='test-disasters-header'}}
+		</div>
+
+		<div class="work-area">
+			{{outlet}}
+		</div>
 	</div>
 </div>

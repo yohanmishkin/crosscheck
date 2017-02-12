@@ -5,5 +5,5 @@ export default DS.Model.extend({
     latitude: DS.attr('number'),
     longitude: DS.attr('number'),
     isCheckedIn: DS.attr('boolean'),
-    workSite: DS.belongsTo('workSite')
+    site: DS.belongsTo('site')
 });

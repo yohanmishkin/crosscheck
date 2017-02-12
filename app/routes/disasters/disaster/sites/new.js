@@ -2,13 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model() {
-		return this.get('store').createRecord('workSite');
+		return this.get('store').createRecord('site');
 	},
 	actions: {
-		saveWorkSite(site) {
+		savesite(site) {
 			let self = this;
 			let disaster = this.modelFor('disasters.edit');
-			disaster.get('workSites').pushObject(site);
+			disaster.get('sites').pushObject(site);
 			site.save().then(() => {
 				disaster.save();
 				self.transitionTo('disasters.edit', disaster.get('id'));

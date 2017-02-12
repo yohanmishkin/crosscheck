@@ -13,8 +13,8 @@ export default Ember.Route.extend({
                 volunteer.set('latitude', loc.coords.latitude);
                 volunteer.set('longitude', loc.coords.longitude);
                 volunteer.set('isCheckedIn', true);
-                // let workSite = this.modelFor('disasters.edit.site');
-                // volunteer.set('workSite', workSite);
+                // let site = this.modelFor('disasters.edit.site');
+                // volunteer.set('site', site);
                 volunteer.save().then(() => {
                     this.transitionTo('disasters.edit', this.modelFor('disasters.edit').get('id'));
                 });

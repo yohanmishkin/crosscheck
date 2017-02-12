@@ -5,8 +5,8 @@ export default function() {
   this.get('/disasters/:id');
   this.patch('/disasters/:id');
   
-  this.post('/work-sites');
-  this.get('/work-sites/:id');
+  this.post('/sites');
+  this.get('/sites/:id');
 
   this.post('/volunteers');
 

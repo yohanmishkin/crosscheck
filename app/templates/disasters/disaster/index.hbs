@@ -1,0 +1,19 @@
+{{inline-edit value=model.name tagName='h3' class="test-disaster-edit-name disaster" save=(route-action 'save')}}
+
+{{#if model.sites}}
+	<h4>Work sites</h4>
+	<ul class="test-sites-list">
+	{{#each model.sites as |site|}}
+		<li>
+			{{link-to site.name 'disasters.disaster.sites.site' site class='test-site-link site'}}
+			<span class="badge-success test-site-checkins">{{if site.hasCheckins site.checkins.length "-"}}</span>
+		</li>
+	{{/each}}
+	</ul>
+	{{link-to 'Add another work site' 'disasters.disaster.sites.new' model class="test-disaster-create-site"}}
+{{else}}
+	{{link-to 'Create first work site' 'disasters.disaster.sites.new' model class="test-disaster-create-site"}}
+{{/if}}
+{{roster-uploader}}
+
+{{outlet}}

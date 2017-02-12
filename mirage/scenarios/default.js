@@ -2,7 +2,7 @@ export default function(server) {
 
 	server.createList('disaster', 6);
   var disaster = server.create('disaster', { name: 'Hurricane Daniel', slug: 'hurricane-daniel' });
-  server.createList('workSite', 3, { disaster });
+  server.createList('site', 3, { disaster });
 
   /*
     Seed your development database using your factories.
