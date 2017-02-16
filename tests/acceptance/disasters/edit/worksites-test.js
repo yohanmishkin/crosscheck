@@ -1,7 +1,11 @@
+import Ember from 'ember';
 import { test } from 'qunit';
 import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance';
 import page from 'crosscheck/tests/pages/disaster';
 import sitePage from 'crosscheck/tests/pages/site';
+import { register } from 'ember-owner-test-utils/test-support/register';
+
+const { Service } = Ember;
 
 moduleForAcceptance('Acceptance | disasters/edit/sites');
 
@@ -24,6 +28,19 @@ test('Volunteer can check into site', function(assert) {
   let disaster = server.create('disaster', { name: 'Hurricane Daniel', slug: 'hurricane-daniel' });
   let site = server.create('site', { name: 'Ticonderoga', location: '12 Candy Lane', disaster });
 
+  let coords = {
+    latitude:40.7686973,
+    longitude:-73.9918181
+  };
+
+  register(this, 'service:geolocation', Service.extend({
+    getLocation() {
+      return new Ember.RSVP.Promise((resolve) => { 
+        resolve({coords});
+      });
+    }
+  }));
+
   sitePage
     .visit({disaster_id: disaster.id, site_id: site.id})
     .checkin();
@@ -34,4 +51,9 @@ test('Volunteer can check into site', function(assert) {
 
   fillIn('.checkin-member-number', '121212');
   click('.checkin-submit');
+
+  andThen(function() {
+    assert.equal(currentURL(), `/disasters/${disaster.id}`, 'Navigated back to site disaster page');
+    assert.equal(find('.test-site-checkins').text(), 1, 'Checkin badge incremented');
+  });
 });
