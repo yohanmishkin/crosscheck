@@ -2,17 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model(params) {
-		let disasters = this.modelFor('disasters');
-		return disasters.findBy('id', params.disaster_id);
+		return this.get('store').findRecord('disaster', params.disaster_id);
 	},
-	// serialize(disaster) {
-	// 	return {
-	// 		disaster_slug: disaster.get('slug')
-	// 	};
-	// },
 	actions: {
 		save() {
-			let disaster = this.modelFor('disasters.edit');
+			let disaster = this.modelFor('disasters.disaster');
 			disaster.save();
 		},
         uploadRoster(event) {

@@ -8,10 +8,10 @@ export default Ember.Route.extend({
 		// 	.then(sites => {
 		// 		return sites.get('firstObject');
 		// 	});
-	},
-	serialize(site) {
-		return {
-			site_slug: site.get('slug')
-		};
 	}
+	// serialize(site) {
+	// 	return {
+	// 		site_slug: site.get('slug')
+	// 	};
+	// }
 });

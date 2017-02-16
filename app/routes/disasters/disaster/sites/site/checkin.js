@@ -16,7 +16,7 @@ export default Ember.Route.extend({
                 // let site = this.modelFor('disasters.edit.site');
                 // volunteer.set('site', site);
                 volunteer.save().then(() => {
-                    this.transitionTo('disasters.edit', this.modelFor('disasters.edit').get('id'));
+                    this.transitionTo('disasters.disaster', this.modelFor('disasters.disaster').get('id'));
                 });
             }, (reason) => {
                 console.log(`Geolocation failed: ${reason}`);

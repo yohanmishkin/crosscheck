@@ -7,11 +7,11 @@ export default Ember.Route.extend({
 	actions: {
 		savesite(site) {
 			let self = this;
-			let disaster = this.modelFor('disasters.edit');
+			let disaster = this.modelFor('disasters.disaster');
 			disaster.get('sites').pushObject(site);
 			site.save().then(() => {
 				disaster.save();
-				self.transitionTo('disasters.edit', disaster.get('id'));
+				self.transitionTo('disasters.disaster', disaster.get('id'));
 			});
 		},
 		cancel() {

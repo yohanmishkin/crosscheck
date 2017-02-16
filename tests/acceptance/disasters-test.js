@@ -4,10 +4,10 @@ import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance'
 moduleForAcceptance('Acceptance | disasters');
 
 test('visiting /disasters, no disasters', function(assert) {
-  visit('/disasters');
+  visit('/');
 
   andThen(() => {
-    assert.equal(currentURL(), '/disasters');
+    assert.equal(currentURL(), '/');
     assert.equal(find('.test-disasters-header').length, 1, 'header appears');
     assert.equal(find('.test-disaster-create-new').length, 1, 'create new link is visible');
     assert.equal(find('.test-disasters-table > tr').length, 0, 'no disasters visible');
@@ -15,7 +15,7 @@ test('visiting /disasters, no disasters', function(assert) {
 });
 
 test('create new disaster', function(assert) {
-	visit('/disasters');
+	visit('/');
 
 	click('.test-disaster-create-new');
 
@@ -30,7 +30,7 @@ test('create new disaster', function(assert) {
 	andThen(() => {
 		assert.equal(find('.test-disasters-list > li').length, 1, 'disaster added to the list');
 		assert.equal(find('.test-disasters-list > li:first').text().trim(), 'Hurricane Dandy', 'disaster name seen in table');
-		assert.equal(currentURL(), '/disasters', 'transitioned back to /disasters');
+		assert.equal(currentURL(), '/', 'transitioned back to /');
 	});
 
 	click('.test-disaster-create-new');
@@ -43,14 +43,14 @@ test('create new disaster', function(assert) {
 });
 
 test('quit creating new disaster and return to existing disasters', function(assert) {
-	visit('/disasters');
+	visit('/');
 
 	click('.test-disaster-create-new');
 	fillIn('.test-model-name-input', 'Hurricane Dandy');
 	click('.test-model-cancel-new');
 
 	andThen(() => {
-		assert.equal(currentURL(), '/disasters', 'transitioned back to /disasters');
+		assert.equal(currentURL(), '/', 'transitioned back to /');
 		assert.equal(find('.test-disasters-list > li').length, 0, 'disaster not added to the list');
 	});
 
@@ -66,10 +66,10 @@ test('quit creating new disaster and return to existing disasters', function(ass
 test('can create work site', function(assert) {
 	let disaster = server.create('disaster', { name: 'Hurricane Charles' });
 
-	visit('/disasters');
+	visit('/');
 
 	click('.test-disasters-list > li > a:first');
-
+	
 	andThen(() => {
 		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'Navigated to edit page');
 		assert.equal(find('.test-disaster-edit-name').text().trim(), 'Hurricane Charles', 'Name is displayed on edit page');
@@ -88,7 +88,7 @@ test('can create work site', function(assert) {
 	click('.test-site-save');
 
 	andThen(() => {
-		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'transitioned back to /disaster/edit');
+		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'transitioned back to edit');
 		assert.equal(find('.test-sites-list > li').length, 1, 'new site added to the site list');
 		assert.equal(find('.test-sites-list > li > a:first').text().trim(), 'Area 51', 'site name seen in table');
 		assert.equal(server.db.sites[0].location, '12 Candy Lane', 'site location was saved');
@@ -97,7 +97,7 @@ test('can create work site', function(assert) {
 	click('.test-disasters-header');
 
 	andThen(() => {
-		assert.equal(currentURL(), '/disasters', 'Clicking header returns to /disasters');
+		assert.equal(currentURL(), '/', 'Clicking header returns to /');
 	});
 });
 
