@@ -1,7 +1,7 @@
 <p class="test-new-site-header">Create new work site</p>
 <div class="full-row">
 	{{input value=model.name placeholder='Name' class='test-model-name-input model-input'}}
-	{{input value=model.location placeholder='Location' class='test-site-location-input model-input'}}
+	{{g-autocomplete value=model.location on-select=(action 'showCoordinates') on-select-error=(action 'autocompleteError') class='test-site-location-input model-input'}}
 </div>
 <div class="full-row">
 	<button {{action 'savesite' model}} class="test-site-save submit">Save</button>

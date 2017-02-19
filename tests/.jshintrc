@@ -24,7 +24,8 @@
     "currentPath",
     "currentRouteName",
     "uploadFile",
-    "upload-file"
+    "upload-file",
+    "selectAutocompletePlace"
   ],
   "node": false,
   "browser": false,

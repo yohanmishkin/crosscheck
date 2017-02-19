@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Application from '../../app';
 import config from '../../config/environment';
+import registerAsyncHelpers from '../helpers/ember-cli-g-maps/register-async-helpers';
 
 export default function startApp(attrs) {
   let application;
@@ -10,6 +11,7 @@ export default function startApp(attrs) {
 
   Ember.run(() => {
     application = Application.create(attributes);
+    registerAsyncHelpers(); // call here
     application.setupForTesting();
     application.injectTestHelpers();
   });

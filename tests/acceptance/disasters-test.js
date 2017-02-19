@@ -84,14 +84,15 @@ test('can create work site', function(assert) {
 	});
 
 	fillIn('.test-model-name-input', 'Area 51');
-	fillIn('.test-site-location-input', '12 Candy Lane');
+	fillIn('.test-site-location-input', 'NYC');
+	selectAutocompletePlace(/* placeResultIndex, autocompleteSelector */); // selects 1st place result	
 	click('.test-site-save');
 
 	andThen(() => {
 		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'transitioned back to edit');
 		assert.equal(find('.test-sites-list > li').length, 1, 'new site added to the site list');
 		assert.equal(find('.test-sites-list > li > a:first').text().trim(), 'Area 51', 'site name seen in table');
-		assert.equal(server.db.sites[0].location, '12 Candy Lane', 'site location was saved');
+		assert.equal(server.db.sites[0].location, 'NYC, NY, United States', 'site location was saved');
 	});
 
 	click('.test-disasters-header');
