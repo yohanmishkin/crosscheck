@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { test } from 'qunit';
 import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance';
-import page from 'crosscheck/tests/pages/disaster';
+import disasterPage from 'crosscheck/tests/pages/disaster';
 import sitePage from 'crosscheck/tests/pages/site';
 import { register } from 'ember-owner-test-utils/test-support/register';
 
@@ -13,7 +13,7 @@ test('Can navigate to site page', function(assert) {
   let disaster = server.create('disaster', { name: 'Hurricane Daniel', slug: 'hurricane-daniel' });
   let site = server.create('site', { name: 'Ticonderoga', location: '12 Candy Lane', disaster });
 
-  page
+  disasterPage
     .visit({disaster_id: disaster.id})
     .site();
   
