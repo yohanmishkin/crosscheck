@@ -6,7 +6,6 @@ const { computed, isPresent } = Ember;
 export default gMaps.extend({
   defaultGMapState: computed(function() {
     const markers = this.get('markers').filter((marker) => {
-    debugger;
       return isPresent(marker.lat) && isPresent(marker.lng);
     });
 
