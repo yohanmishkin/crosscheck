@@ -1,5 +1,6 @@
 import { test,skip } from 'qunit';
 import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance';
+import page from 'crosscheck/tests/pages/disaster';
 
 moduleForAcceptance('Acceptance | disasters');
 
@@ -61,6 +62,12 @@ test('quit creating new disaster and return to existing disasters', function(ass
 	andThen(() => {
 		assert.equal(find('.test-disasters-list > li').length, 0, 'disaster not added to the list after escape pressed');
 	});
+
+	click('.test-disasters-header');
+
+	andThen(() => {
+		assert.equal(currentURL(), '/', 'Clicking header returns to /');
+	});
 });
 
 test('can create work site', function(assert) {
@@ -92,13 +99,10 @@ test('can create work site', function(assert) {
 		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'transitioned back to edit');
 		assert.equal(find('.test-sites-list > li').length, 1, 'new site added to the site list');
 		assert.equal(find('.test-sites-list > li > a:first').text().trim(), 'Area 51', 'site name seen in table');
-		assert.equal(server.db.sites[0].location, 'NYC, NY, United States', 'site location was saved');
-	});
-
-	click('.test-disasters-header');
-
-	andThen(() => {
-		assert.equal(currentURL(), '/', 'Clicking header returns to /');
+		let site = server.db.sites[0];
+		assert.equal(site.location, 'NYC, NY, United States', 'site location was saved');
+		assert.equal(site.lat, 12, 'lat is set');
+		assert.equal(site.lng, 12, 'lng is set');
 	});
 });
 
@@ -113,6 +117,17 @@ test('can edit disaster name', function(assert) {
 	andThen(() => {
 		assert.equal(find('.test-disaster-edit-name').text().trim(), 'Earthquake Charles', 'Disaster was updated');
 		assert.equal(server.db.disasters[0].name, 'Earthquake Charles', 'Disaster was saved');
+	});
+});
+
+test('Disaster has map of sites', function(assert) {
+	let disaster = server.create('disaster');
+	server.createList('site', 5, { disaster });
+
+	page.visit({disaster_id: disaster.id});
+
+	andThen(() => {
+		assert.equal(find('.test-site-map').length, 1, 'Map is visible');
 	});
 });
 

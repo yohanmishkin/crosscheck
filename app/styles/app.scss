@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Baloo|Lalezar|Lato|Montserrat:400,700');
 
 // See https://github.com/HeroicEric/ember-normalize
 @import "normalize";
@@ -30,8 +30,8 @@ a {
       @extend .full-row;
       h2 {
         text-align: center;
-        font-size: 2em;
-        margin-top: 15px;
+        font-size: 2.5em;
+        margin: 15px 0 15px;
         cursor: pointer;
       }
     }
@@ -116,4 +116,10 @@ $badges: (
     line-height: 1;
     padding: 0.4em 1.2em;
   }
+}
+
+
+.disaster-map {
+    min-height: 300px;
+    margin: 0 0 $base-spacing;
 }

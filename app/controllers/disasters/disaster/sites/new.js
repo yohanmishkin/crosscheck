@@ -2,10 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     actions: {
-        showCoordinates({lat, lng, place}) {
-            this.set('lat', lat);
-            this.set('lng', lng);
-            this.set('address', place.formatted_address);
+        updateCoordinates({lat, lng}) {
+            this.get('model').set('lat', lat);
+            this.get('model').set('lng', lng);
         },
 
         autocompleteError(err) {

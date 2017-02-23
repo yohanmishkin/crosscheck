@@ -1,6 +1,7 @@
 {{inline-edit value=model.name tagName='h3' class="test-disaster-edit-name disaster" save=(route-action 'save')}}
 
 {{#if model.sites}}
+	{{g-maps name='disaster-map' markers=markers class='disaster-map test-site-map'}}
 	<h4>Work sites</h4>
 	<ul class="test-sites-list">
 	{{#each model.sites as |site|}}
