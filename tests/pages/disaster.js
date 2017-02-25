@@ -6,5 +6,6 @@ import {
 
 export default create({
   visit: visitable('/disasters/:disaster_id'),
-  site: clickable('.test-site-link')
+  site: clickable('.test-site-link'),
+  newSite: clickable('.test-disaster-create-site')
 });

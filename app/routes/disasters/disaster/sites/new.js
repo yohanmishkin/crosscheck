@@ -4,6 +4,9 @@ export default Ember.Route.extend({
 	model() {
 		return this.get('store').createRecord('site');
 	},
+	deactivate() {
+		this.get('currentModel').deleteRecord();
+	},
 	actions: {
 		savesite(site) {
 			let self = this;

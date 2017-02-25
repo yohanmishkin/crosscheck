@@ -57,3 +57,20 @@ test('Volunteer can check into site', function(assert) {
     assert.equal(find('.test-site-checkins').text(), 1, 'Checkin badge incremented');
   });
 });
+
+test('Deactivates model if you navigate away from new site page', function(assert) {
+	let disaster = server.create('disaster');
+	server.create('site', { disaster });
+
+	disasterPage
+		.visit({disaster_id: disaster.id})
+		.newSite();
+    
+	click('.test-disasters-header');
+
+	andThen(() => {
+		let store = this.application.__container__.lookup('service:store');
+		let sites = store.peekAll('site');
+		assert.equal(sites.get('length'), 1, 'New site was discarded');
+	});
+});
