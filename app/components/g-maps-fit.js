@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import Ember from 'ember';
 import gMaps from 'ember-cli-g-maps/components/g-maps';
 
@@ -21,3 +22,4 @@ export default gMaps.extend({
     }
   })
 });
+/* jshint ignore:end */

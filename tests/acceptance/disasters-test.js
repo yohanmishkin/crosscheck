@@ -92,7 +92,7 @@ test('can create work site', function(assert) {
 
 	fillIn('.test-model-name-input', 'Area 51');
 	fillIn('.test-site-location-input', 'NYC');
-	selectAutocompletePlace(/* placeResultIndex, autocompleteSelector */); // selects 1st place result	
+	selectAutocompletePlace();
 	click('.test-site-save');
 
 	andThen(() => {
@@ -100,9 +100,8 @@ test('can create work site', function(assert) {
 		assert.equal(find('.test-sites-list > li').length, 1, 'new site added to the site list');
 		assert.equal(find('.test-sites-list > li > a:first').text().trim(), 'Area 51', 'site name seen in table');
 		let site = server.db.sites[0];
-		assert.equal(site.location, 'NYC, NY, United States', 'site location was saved');
-		assert.equal(site.lat, 12, 'lat is set');
-		assert.equal(site.lng, 12, 'lng is set');
+		assert.equal(site.lat.toString().slice(0,2), 40, 'lat is set');
+		assert.equal(site.lng.toString().slice(0,3), -74, 'lng is set');
 	});
 });
 
