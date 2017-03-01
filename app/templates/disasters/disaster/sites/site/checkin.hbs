@@ -1,4 +1,5 @@
 <div class="full-row">
     {{input value=model.memberNumber placeholder='Member #' class='checkin-member-number model-input'}}
-    <button {{action (route-action 'save' model)}} class="checkin-submit">Check In</button>
+    {{!--<button {{action (route-action 'save' model)}} class="checkin-submit">Check In</button>--}}
+    {{async-button action=(route-action "save" model) default="Check in" pending="Checking in..."}}
 </div>
