@@ -7,6 +7,11 @@ module.exports = function(defaults) {
     // Add options here
     dotEnv: {
       clientAllowedKeys: ['GOOGLE_PLACES_API_KEY']
+    },
+    sassOptions: {
+      includePaths: [
+        'bower_components/neat'
+      ]
     }
   });
 

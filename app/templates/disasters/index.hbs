@@ -1,7 +1,9 @@
 <ul class="test-disasters-list">
 	{{#each model as |disaster|}}
-		<li class='disaster'>
-			{{link-to disaster.name "disasters.disaster.index" disaster}}
+		<li class='disaster card'>
+			<div class="disaster-description">
+				{{link-to disaster.name "disasters.disaster.index" disaster}}
+			</div>
 		</li>
 	{{/each}}
 	{{link-to 'Create New' 'disasters.new' class='test-disaster-create-new'}}

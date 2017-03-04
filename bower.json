@@ -2,7 +2,7 @@
   "name": "crosscheck",
   "dependencies": {
     "bourbon": "^4.2.7",
-    "neat": "^1.8.0",
+    "neat": "2.0.0",
     "ember": "2.11.0",
     "ember-cli-shims": "0.1.3",
     "gmaps-for-apps": "^0.5.14"

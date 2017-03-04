@@ -5,8 +5,12 @@
 
 // Bourbon + Neat + Bitters
 @import "bower_components/bourbon/app/assets/stylesheets/_bourbon";
-@import "bower_components/neat/app/assets/stylesheets/_neat";
+@import "core/_neat";
 @import "base/_base";
+
+html {
+  height: 100%;
+}
 
 a {
   color: $blue;
@@ -21,7 +25,8 @@ a {
 }
 
 .container {
-  @include outer-container;
+  @include grid-container;
+  // background-color: F17C47;
 
   .wrapper {
     padding: 0 1.2em;
@@ -52,27 +57,33 @@ a {
       }
 
       .full-row {
-        @include span-columns(12);
+        @include grid-column(12);
         .model-input {
-          // @include span-columns(8 of 12);
-          @include reset-display;
+          // @include grid-column(8 of 12);
+          // @include reset-display;
 
           text-align: center;
         }
 
         .create-new-controls {
-          // @include span-columns(4 of 12);
-          @include reset-display;
+          // @include grid-column(4 of 12);
+          // @include reset-display;
         }
       }
 
-      .disaster, .site {
+      .site {
         cursor: pointer;
       }
 
-      .another-site {
-        display: block;
-        padding-top: 15px;
+      .disaster {
+        a {
+          display: block;
+          padding: 10px 10px;
+        }
+
+        &:hover {
+          box-shadow: 0 14px 18px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
       }
     }
   }  
@@ -141,7 +152,7 @@ $badges: (
   $base-font-color: $dark-gray !default;
   $card-border-color: $base-border-color;
   $card-border: 1px solid $card-border-color;
-  $card-background: lighten($card-border-color, 10%);
+  $card-background: white !default;
   $card-header-background: $card-background;
   $card-margin: 1em;
   $card-map-hover-opacity: 0.7;
@@ -150,15 +161,14 @@ $badges: (
   background-color: $card-background;
   border: $card-border;
   border-radius: $base-border-radius;
-  box-shadow: 0 2px 4px darken($base-background-color, 10%);
+
+  box-shadow: 0 10px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   cursor: pointer;
   flex-basis: 15em;
-  // flex-grow: 1;
-  // margin: 0 $card-margin $base-spacing $card-margin;
   max-width: 800px;
   text-align: center;
-  // position: relative;
   transition: all 0.2s ease-in-out;
+  margin-bottom: 22px;
 
   .card-map {
     background-color: $card-map-hover-color;
