@@ -29,8 +29,8 @@ test('create new disaster', function(assert) {
 	click('.test-model-create-new');
 
 	andThen(() => {
-		assert.equal(find('.test-disasters-list > li').length, 1, 'disaster added to the list');
-		assert.equal(find('.test-disasters-list > li:first').text().trim(), 'Hurricane Dandy', 'disaster name seen in table');
+		assert.equal(find('.disaster').length, 1, 'disaster added to the list');
+		assert.equal(find('.disaster').text().trim(), 'Hurricane Dandy', 'disaster name seen in table');
 		assert.equal(currentURL(), '/', 'transitioned back to /');
 	});
 
@@ -39,7 +39,7 @@ test('create new disaster', function(assert) {
 	keyEvent('.test-model-name-input', 'keyup', 13);
 
 	andThen(() => {
-		assert.equal(find('.test-disasters-list > li').length, 2, 'disaster added to the list using enter keypress');
+		assert.equal(find('.disaster').length, 2, 'disaster added to the list using enter keypress');
 	});
 });
 
@@ -75,7 +75,7 @@ test('can create work site', function(assert) {
 
 	visit('/');
 
-	click('.test-disasters-list > li > a:first');
+	click('.test-disasters-list > a:first');
 	
 	andThen(() => {
 		assert.equal(currentURL(), `/disasters/${disaster.id}`, 'Navigated to edit page');

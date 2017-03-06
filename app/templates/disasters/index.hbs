@@ -1,10 +1,15 @@
 <ul class="test-disasters-list">
 	{{#each model as |disaster|}}
+		{{#link-to "disasters.disaster.index" disaster}}
 		<li class='disaster card'>
-			<div class="disaster-description">
-				{{link-to disaster.name "disasters.disaster.index" disaster}}
+			<div class="card-map">
+				
+			</div>
+			<div class="card-header">
+				 {{disaster.name}}
 			</div>
 		</li>
+		{{/link-to}}
 	{{/each}}
 	{{link-to 'Create New' 'disasters.new' class='test-disaster-create-new'}}
 </ul>

@@ -8,5 +8,8 @@ import {
 export default create({
   visit: visitable(`/disasters/:disaster_id/checkin`),
   memberNumber: fillable('.checkin-member-number'),
+  memberName: fillable('.checkin-member-name'),
+  memberPhone: fillable('.checkin-member-phone'),
+  memberGap: fillable('.checkin-member-gap'),
   submit: clickable('.checkin-submit')
 });

@@ -3,6 +3,7 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance';
 import disasterPage from 'crosscheck/tests/pages/disaster';
 import sitePage from 'crosscheck/tests/pages/site';
+import checkinPage from 'crosscheck/tests/pages/checkin';
 import { register } from 'ember-owner-test-utils/test-support/register';
 
 const { Service } = Ember;
@@ -49,8 +50,12 @@ test('Volunteer can check into site', function(assert) {
     assert.equal(currentURL(), `/disasters/${disaster.id}/sites/${site.id}/checkin`, 'Navigated to site checkin page');
   });
 
-  fillIn('.checkin-member-number', '121212');
-  click('.checkin-submit');
+  checkinPage
+    .memberName('Charles Beasley Sines')
+    .memberNumber('121212')
+    .memberPhone('123-456-7899')
+    .memberGap('Supervisor')
+    .submit();
 
   andThen(function() {
     assert.equal(currentURL(), `/disasters/${disaster.id}`, 'Navigated back to site disaster page');
@@ -73,4 +78,8 @@ test('Deactivates model if you navigate away from new site page', function(asser
 		let sites = store.peekAll('site');
 		assert.equal(sites.get('length'), 1, 'New site was discarded');
 	});
+});
+
+test('View volunteers on site', function(assert) {
+  
 });
