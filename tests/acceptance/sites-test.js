@@ -80,6 +80,19 @@ test('Deactivates model if you navigate away from new site page', function(asser
 	});
 });
 
-test('View volunteers on site', function(assert) {
-  
+test('View volunteers roster on site', function(assert) {
+  let volunteers = server.createList('volunteer', 2);
+  let disaster = server.create('disaster');
+	let site = server.create('site', { disaster, volunteers });
+
+  sitePage
+    .visit({
+      disaster_id: disaster.id, 
+      site_id: site.id
+    });
+
+  andThen(() => {
+    assert.ok(find('.test-roster'), 'Roster header appears');
+    assert.equal(find('.test-volunteer-list > li').length, 2, 'List of volunteers visible');
+  });
 });

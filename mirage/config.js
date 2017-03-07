@@ -9,6 +9,7 @@ export default function() {
   this.get('/sites/:id');
 
   this.post('/volunteers');
+  this.get('/volunteers/:id');
 
   // These comments are here to help you get started. Feel free to delete them.
 
