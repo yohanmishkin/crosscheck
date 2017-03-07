@@ -3,12 +3,14 @@
 
 {{link-to 'Check in' 'disasters.disaster.sites.site.checkin' model class='test-site-checkin'}}
 
-<hr>
-<div class="test-roster">
-    <h6>Roster</h6>
-    <ul class="test-volunteer-list">
-    {{#each model.volunteers as |volunteer|}}
-        <li>{{volunteer.memberNumber}}</li>
-    {{/each}}
-    </ul>
-</div>
+{{#if model.volunteers}}
+    <hr>
+    <div class="test-roster">
+        <h6>Roster</h6>
+        <ul class="test-volunteer-list">
+        {{#each model.volunteers as |volunteer|}}
+            <li>{{volunteer.memberNumber}}</li>
+        {{/each}}
+        </ul>
+    </div>
+{{/if}}

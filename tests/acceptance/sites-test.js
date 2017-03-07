@@ -96,3 +96,20 @@ test('View volunteers roster on site', function(assert) {
     assert.equal(find('.test-volunteer-list > li').length, 2, 'List of volunteers visible');
   });
 });
+
+test('No roster appears on site without volunteers', function(assert) {
+  let disaster = server.create('disaster');
+	let site = server.create('site', { disaster, volunteers: null });
+
+  sitePage
+    .visit({
+      disaster_id: disaster.id, 
+      site_id: site.id
+    });
+
+  andThen(() => {
+    assert.notOk(find('.test-roster').length > 0, 'Roster header doesnt appear');
+    assert.notOk(find('.test-volunteer-list').length > 0, 'Volunteer list doesnt appear');
+  });
+
+});
