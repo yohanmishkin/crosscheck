@@ -12,7 +12,7 @@
 			<ul class="test-sites-list">
 			{{#each model.sites as |site|}}
 				<li>
-					{{link-to site.name 'disasters.disaster.sites.site' site class='test-site-link site'}}
+					{{link-to site.name 'disasters.disaster.sites.site' site.disaster.id site.id class='test-site-link site'}}
 					<span class="badge-success test-site-checkins">{{if site.hasCheckins site.checkins.length "-"}}</span>
 				</li>
 			{{/each}}
@@ -25,4 +25,4 @@
 {{/if}}
 {{roster-uploader}}
 
-{{outlet}}
+{{liquid-outlet}}

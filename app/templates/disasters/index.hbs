@@ -1,6 +1,6 @@
 <ul class="test-disasters-list">
 	{{#each model as |disaster|}}
-		{{#link-to "disasters.disaster.index" disaster}}
+		{{#link-to "disasters.disaster" disaster}}
 		<li class='disaster card'>
 			<div class="card-map">
 				
@@ -13,4 +13,4 @@
 	{{/each}}
 	{{link-to 'Create New' 'disasters.new' class='test-disaster-create-new'}}
 </ul>
-{{outlet}}
+{{liquid-outlet}}
