@@ -10,6 +10,79 @@
 
 html {
   height: 100%;
+  background-color: rgb(246, 246, 246);
+}
+
+
+.container {
+  @include grid-container;
+
+  .page-header {
+    @extend .full-row;
+
+    background-color: white;
+    padding: 8px 0;
+
+    .logo img {
+      // width: 100%;
+      width: 55px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.5em;
+    cursor: pointer;
+  }
+
+  .work-area {
+    height: 100%;
+    text-align: center;
+
+    ul {
+      // padding-bottom: 15px;
+    }
+
+    li {
+      font-size: 1.5em;
+    }
+
+    h3 {
+      font-size: 2em;
+    }
+
+    .full-row {
+      @include grid-column(12);
+
+      .model-input {
+        text-align: center;
+      }
+    }
+
+    .site {
+      cursor: pointer;
+    }
+
+    .disasters {
+      background-color: #fff;
+      box-shadow: 0 38px 43px rgba(0,0,0,.05);
+      padding: 0 1.2em;
+      margin-left: 30px;
+      margin-right: 30px;
+      margin-bottom: 65px;
+      
+      .disaster {
+        padding: 12px 12px;
+      }
+
+      .create-new-disaster {
+        @extend .disaster;
+        font-size: 1.2em;
+      }
+    }
+  }
 }
 
 .submit {
@@ -18,75 +91,6 @@ html {
 
 .cancel {
   background-color: $red;
-}
-
-.container {
-  @include grid-container;
-
-  .wrapper {
-    padding: 0 1.2em;
-
-    .page-header {
-      @extend .full-row;
-
-      .logo {
-        width: 100%;
-      }
-
-      h2 {
-        text-align: center;
-        font-size: 2.5em;
-        margin: 15px 0 15px;
-        cursor: pointer;
-      }
-    }
-
-    .work-area {
-      text-align: center;
-
-      ul {
-        // padding-bottom: 15px;
-      }
-
-      li {
-        font-size: 1.5em;
-      }
-
-      h3 {
-        font-size: 2em;
-      }
-
-      .full-row {
-        @include grid-column(12);
-        .model-input {
-          // @include grid-column(8 of 12);
-          // @include reset-display;
-
-          text-align: center;
-        }
-
-        .create-new-controls {
-          // @include grid-column(4 of 12);
-          // @include reset-display;
-        }
-      }
-
-      .site {
-        cursor: pointer;
-      }
-
-      .disaster {
-        a {
-          display: block;
-          padding: 10px 10px;
-        }
-
-        &:hover {
-          box-shadow: 0 14px 18px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-        }
-      }
-    }
-  }  
 }
 
 .checkin-input {
@@ -141,7 +145,6 @@ $badges: (
 }
 
 
-
 .card {
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;
@@ -160,14 +163,17 @@ $badges: (
 
   background-color: $card-background;
   border: $card-border;
-  border-radius: $base-border-radius;
+  // border-radius: $base-border-radius;
 
-  box-shadow: 0 10px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  // box-shadow: 0 10px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 38px 43px rgba(0,0,0,.05);  
   cursor: pointer;
   flex-basis: 15em;
   max-width: 800px;
   text-align: center;
   transition: all 0.2s ease-in-out;
+  margin-left: 30px;
+  margin-right: 30px;
   margin-bottom: 22px;
 
   .card-map {
@@ -187,13 +193,14 @@ $badges: (
   .card-header {
     background-color: $card-header-background;
     border-bottom: $card-border;
-    border-radius: $base-border-radius $base-border-radius 0 0;
+    // border-radius: $base-border-radius $base-border-radius 0 0;
     font-weight: bold;
     line-height: 1.5em;
     padding: ($base-spacing / 3) ($base-spacing / 2);
     transition: all 0.2s ease-in-out;
 
     h4 {
+      margin-top: 0px;
       margin-bottom: 0px;
     }
   }
