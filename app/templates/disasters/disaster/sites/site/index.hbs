@@ -1,7 +1,7 @@
-<h5 class="test-site-name">{{model.name}}</h5>
-<h6 class="test-site-location">{{model.location}}</h6>
+<h4 class="test-site-name">{{model.name}}</h4>
+<h5 class="test-site-location site-location">{{model.location}}</h5>
 
-{{link-to 'Check in' 'disasters.disaster.sites.site.checkin' model class='test-site-checkin'}}
+{{link-to 'Check in' 'disasters.disaster.sites.site.checkin' model.disaster.id model.id class='test-site-checkin'}}
 
 {{#if model.volunteers}}
     <hr>

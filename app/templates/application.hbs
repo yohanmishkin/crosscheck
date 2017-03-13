@@ -1,10 +1,32 @@
-<div class="container">
-
-	<div class="page-header">
-	{{#link-to 'disasters' class='logo test-disasters-header'}}
+<header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    {{#link-to 'disasters' class='test-disasters-header logo'}}
 		<img src='/assets/img/check_logo.svg' />
 	{{/link-to}}
-	</div>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">{{fa-icon 'bars' size='lg'}}</a>
+    {{!--<nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <li class="nav-link"><a href="javascript:void(0)">Products</a></li>
+        <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
+        <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
+      </ul>
+    </nav>--}}
+  </div>
+</header>
+
+<div class="container">
+
+	{{!--<div class="page-header">--}}
+		{{!--<div class="logo">
+			{{#link-to 'disasters' class='test-disasters-header'}}
+				<img src='/assets/img/check_logo.svg' />
+			{{/link-to}}
+		</div>
+		<div class="menu">
+			{{fa-icon 'bars' size='lg'}}
+		</div>--}}
+
+	{{!--</div>--}}
 
 	<div class="work-area">
 		{{liquid-outlet}}
