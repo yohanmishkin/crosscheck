@@ -45,7 +45,7 @@ test('Volunteer can check into site', function(assert) {
   sitePage
     .visit({disaster_id: disaster.id, site_id: site.id})
     .checkin();
-
+    
   andThen(function() {
     assert.equal(currentURL(), `/disasters/${disaster.id}/sites/${site.id}/checkin`, 'Navigated to site checkin page');
   });

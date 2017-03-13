@@ -13,7 +13,16 @@
 			{{#each model.sites as |site|}}
 				<li>
 					{{link-to site.name 'disasters.disaster.sites.site' site.disaster.id site.id class='test-site-link site'}}
-					<span class="badge-success test-site-checkins">{{if site.hasCheckins site.checkins.length "-"}}</span>
+					<span class="no-checkins">
+						{{fa-icon 'check' class='test-site-no-checkins'}}
+						{{if site.hasCheckins site.checkins.length "-"}}
+					</span>
+					<span class="checkins">
+						{{fa-icon 'check'}}
+						<span class='test-site-checkins'>
+							{{if site.hasCheckins site.checkins.length "-"}}
+						</span>
+					</span>
 				</li>
 			{{/each}}
 			</ul>
