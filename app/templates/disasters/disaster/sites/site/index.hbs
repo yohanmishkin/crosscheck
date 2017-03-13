@@ -5,8 +5,15 @@
 
 {{#if model.volunteers}}
     <hr>
-    <div class="test-roster">
-        <h6>Roster</h6>
+    <div class="card">
+		<div class="card-map test-map">
+            {{g-maps-fit name='volunteer-map' markers=markers class='volunteer-map test-volunteer-map'}}
+        </div>
+    </div>
+    <div class="card-header">
+        <h4>Roster</h4>
+    </div>
+    <div class="card-copy test-roster">
         <ul class="test-volunteer-list">
         {{#each model.volunteers as |volunteer|}}
             <li>{{volunteer.memberNumber}}</li>

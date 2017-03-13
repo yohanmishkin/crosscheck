@@ -1,8 +1,9 @@
 export default function(server) {
 
-	server.createList('disaster', 1);
-  var disaster = server.create('disaster', { name: 'Hurricane Daniel', slug: 'hurricane-daniel' });
-  server.createList('site', 3, { disaster });
+  // let volunteers = server.createList('volunteer', 2);
+	// server.createList('disaster', 1);
+  // let  disaster = server.create('disaster', { name: 'Hurricane Daniel', slug: 'hurricane-daniel' });
+  // server.createList('site', 3, { disaster, volunteers });
 
   /*
     Seed your development database using your factories.

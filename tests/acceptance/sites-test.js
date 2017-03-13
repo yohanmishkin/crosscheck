@@ -45,7 +45,7 @@ test('Volunteer can check into site', function(assert) {
   sitePage
     .visit({disaster_id: disaster.id, site_id: site.id})
     .checkin();
-    
+
   andThen(function() {
     assert.equal(currentURL(), `/disasters/${disaster.id}/sites/${site.id}/checkin`, 'Navigated to site checkin page');
   });
@@ -112,4 +112,23 @@ test('No roster appears on site without volunteers', function(assert) {
     assert.notOk(find('.test-volunteer-list').length > 0, 'Volunteer list doesnt appear');
   });
 
+});
+
+test('View volunteer map on site page', function(assert) {
+  let volunteers = server.createList('volunteer', 1, {
+    latitude:40.7686973,
+    longitude:-73.9918181
+  });
+  let disaster = server.create('disaster');
+	let site = server.create('site', { disaster, volunteers });
+
+  sitePage
+    .visit({
+      disaster_id: disaster.id, 
+      site_id: site.id
+    });
+
+  andThen(() => {
+    assert.ok(find('.test-volunteer-map').length, 1, 'Volunteer map appears');
+  });
 });
