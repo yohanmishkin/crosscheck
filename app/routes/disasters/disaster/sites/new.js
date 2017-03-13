@@ -1,11 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	isSaved: false,
 	model() {
 		return this.get('store').createRecord('site');
 	},
 	deactivate() {
-		this.get('currentModel').deleteRecord();
+		if (!this.get('isSaved'))
+			this.get('currentModel').deleteRecord();
 	},
 	actions: {
 		savesite(site) {
@@ -14,6 +16,7 @@ export default Ember.Route.extend({
 			disaster.get('sites').pushObject(site);
 			site.save().then(() => {
 				disaster.save();
+				self.set('isSaved', true);
 				self.transitionTo('disasters.disaster', disaster.get('id'));
 			});
 		},
