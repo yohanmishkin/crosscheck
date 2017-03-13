@@ -10,6 +10,7 @@ export default DS.Model.extend({
 	disaster: DS.belongsTo('disaster'),
 	volunteers: DS.hasMany('volunteer'),
 	checkins: Ember.computed.filterBy('volunteers', 'isCheckedIn', true),
+	noCheckins: Ember.computed.filterBy('volunteers', 'isCheckedIn', false),
 	hasNoCheckins: Ember.computed.empty('checkins'),
 	hasCheckins: Ember.computed.not('hasNoCheckins'),
 	slug: Ember.computed('name', function() {
