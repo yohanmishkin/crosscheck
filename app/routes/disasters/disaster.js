@@ -11,7 +11,22 @@ export default Ember.Route.extend({
 			disaster.save();
 		},
         uploadRoster(event) {
-			console.log(event);
+			debugger;
+			let reader = new FileReader();
+			reader.onloadend = function() {
+				// console.log(reader.result);
+				let csv = reader.result;
+				let data = $.csv.toArrays(csv);
+				for (var row in data) {
+					console.log('rooooooooow');
+				}
+				// foreach (var record in reader.result) {
+					// create sites
+					// create volunteers
+				//}	
+			};
+
+			reader.readAsText(event[0]);
 			// Post file to API /disasters/:id/upload
 			// Reload store
 		}
