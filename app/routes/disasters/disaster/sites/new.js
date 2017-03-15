@@ -6,11 +6,12 @@ export default Ember.Route.extend({
 		return this.get('store').createRecord('site');
 	},
 	deactivate() {
-		if (!this.get('isSaved'))
+		if (!this.get('isSaved')) {
 			this.get('currentModel').deleteRecord();
+		}
 	},
 	actions: {
-		savesite(site) {
+		saveSite(site) {
 			let self = this;
 			let disaster = this.modelFor('disasters.disaster');
 			disaster.get('sites').pushObject(site);
