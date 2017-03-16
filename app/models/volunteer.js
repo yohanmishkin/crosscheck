@@ -2,6 +2,8 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+    name: DS.attr('string'),
+    status: DS.attr('string'),
     memberNumber: DS.attr('number'),
     latitude: DS.attr('number'),
     longitude: DS.attr('number'),
