@@ -7,6 +7,7 @@ export default function() {
   
   this.post('/sites');
   this.get('/sites/:id');
+  this.patch('/sites/:id');
 
   this.post('/volunteers');
   this.get('/volunteers/:id');

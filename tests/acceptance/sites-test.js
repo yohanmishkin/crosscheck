@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import { test } from 'qunit';
+import { register } from 'ember-owner-test-utils/test-support/register';
 import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance';
 import disasterPage from 'crosscheck/tests/pages/disaster';
 import sitePage from 'crosscheck/tests/pages/site';
 import checkinPage from 'crosscheck/tests/pages/checkin';
-import { register } from 'ember-owner-test-utils/test-support/register';
 
 const { Service } = Ember;
 
@@ -57,9 +57,19 @@ test('Volunteer can check into site', function(assert) {
     .memberGap('Supervisor')
     .submit();
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(currentURL(), `/disasters/${disaster.id}`, 'Navigated back to site disaster page');
     assert.equal(find('.test-site-checkins').text(), 1, 'Checkin badge incremented');
+    assert.equal(server.db.volunteers[0].siteId, site.id, 'volunteer were added to site');
+  });
+
+  sitePage
+    .visit({disaster_id: disaster.id, site_id: site.id});
+
+  andThen(function() {
+    assert.equal(find('.test-volunteer-member-name').text(), 'Charles Beasley Sines', 'Member name visible');
+    assert.equal(find('.test-volunteer-member-status').text(), 'Supervisor', 'Member status visible');
+    assert.equal(find('.test-volunteer-member-number').text(), '121212', 'Member number visible');
   });
 });
 
@@ -84,7 +94,8 @@ test('View volunteers roster on site', function(assert) {
   let volunteers = server.createList('volunteer', 1, {
     name: "volunteerName",
     status: 'statusCode',
-    memberNumber: "1234"
+    memberNumber: "1234",
+    isCheckedIn: false
   });
   let disaster = server.create('disaster');
 	let site = server.create('site', { disaster, volunteers });
@@ -102,6 +113,26 @@ test('View volunteers roster on site', function(assert) {
     assert.equal(find('.test-volunteer-member-status').text(), 'statusCode', 'Member status visible');
     assert.equal(find('.test-volunteer-member-number').text(), '1234', 'Member number visible');
   });
+
+  sitePage
+    .visit({
+      disaster_id: disaster.id, 
+      site_id: site.id
+    })
+    .checkin();
+
+  checkinPage
+    .memberName('Charles Beasley Sines')
+    .memberNumber('121212')
+    .memberPhone('123-456-7899')
+    .memberGap('Supervisor')
+    .submit();
+
+    andThen(() => {
+      assert.equal(currentURL(), `/disasters/${disaster.id}`, 'Navigated to site page');
+      assert.equal(find('.test-site-checkins').text().trim(), 1, 'checkins badge looks good');
+      assert.equal(find('.test-site-no-checkins').text().trim(), 1, 'no checkins badge looks good');
+    });
 });
 
 test('No roster appears on site without volunteers', function(assert) {

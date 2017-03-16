@@ -6,13 +6,22 @@ export default DS.Model.extend({
 	location: DS.attr('string'),
 	lat: DS.attr('number'),
 	lng: DS.attr('number'),
-	
+
 	disaster: DS.belongsTo('disaster'),
 	volunteers: DS.hasMany('volunteer'),
-	checkins: Ember.computed.filterBy('volunteers', 'isCheckedIn', true),
-	noCheckins: Ember.computed.filterBy('volunteers', 'isCheckedIn', false),
-	hasNoCheckins: Ember.computed.empty('checkins'),
-	hasCheckins: Ember.computed.not('hasNoCheckins'),
+	
+	volunteersCheckedIn: Ember.computed.filterBy('volunteers', 'isCheckedIn', true),
+	checkInCount: Ember.computed('volunteersCheckedIn', function() {
+		return this.get('volunteersCheckedIn.length');
+	}),
+	hasCheckIns: Ember.computed.gt('checkInCount', 0),
+	
+	volunteersNotCheckedIn: Ember.computed.filterBy('volunteers', 'isCheckedIn', false),
+	notCheckInCount: Ember.computed('volunteersNotCheckedIn', function() {
+		return this.get('volunteersNotCheckedIn.length');
+	}),
+	hasNotCheckIns: Ember.computed.gt('notCheckInCount', 0),
+	
 	slug: Ember.computed('name', function() {
 		return this.get('name').dasherize();
 	}),

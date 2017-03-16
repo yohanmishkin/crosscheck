@@ -10,13 +10,19 @@ export default Ember.Route.extend({
     actions: {
         save(volunteer) {
             this.get('geolocation').getLocation().then((loc) => {
+                
                 volunteer.set('latitude', loc.coords.latitude);
                 volunteer.set('longitude', loc.coords.longitude);
                 volunteer.set('isCheckedIn', true);
+                
                 let site = this.modelFor('disasters.disaster.sites.site');
                 volunteer.set('site', site);
-                volunteer.save().then(() => {
-                    this.transitionTo('disasters.disaster', this.modelFor('disasters.disaster').get('id'));
+
+                return volunteer.save().then((savedVolunteer) => {
+                    site.get('volunteers').pushObject(savedVolunteer);
+                    return site.save().then(() => {
+                        return this.transitionTo('disasters.disaster', this.modelFor('disasters.disaster').get('id'));
+                    });
                 });
             }, (reason) => {
                 console.log(`Geolocation failed: ${reason}`);

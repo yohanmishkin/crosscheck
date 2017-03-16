@@ -15,12 +15,14 @@
 					{{link-to site.name 'disasters.disaster.sites.site' site.disaster.id site.id class='test-site-link site'}}
 					<span class="no-checkins">
 						{{fa-icon 'check' class='test-site-no-checkins'}}
-						{{if site.hasNoCheckins site.noCheckins.length "-"}}
+						<span class='test-site-no-checkins'>
+							{{if site.hasNotCheckIns site.volunteersNotCheckedIn.length "-"}}
+						</span>
 					</span>
 					<span class="checkins">
 						{{fa-icon 'check'}}
 						<span class='test-site-checkins'>
-							{{if site.hasCheckins site.checkins.length "-"}}
+							{{if site.hasCheckIns site.volunteersCheckedIn.length "-"}}
 						</span>
 					</span>
 				</li>
