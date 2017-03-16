@@ -21,14 +21,14 @@ export default Ember.Route.extend({
 				let data = $.csv.toArrays(csv);
 				
 				for (var row in data) {
-					if (row == 0) { // headers
+					if (row === 0) { // headers
 						continue;
 					}
 
 					let tempSiteName = data[row][0];
 					if (tempSiteName) {
 						let existingSite = self.get('currentModel.sites').mapBy('name').find((name) => { 
-							return name == tempSiteName;
+							return name === tempSiteName;
 						});
 
 						if (!existingSite) {

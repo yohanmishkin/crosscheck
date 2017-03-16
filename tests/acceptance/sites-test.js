@@ -81,7 +81,11 @@ test('Deactivates model if you navigate away from new site page', function(asser
 });
 
 test('View volunteers roster on site', function(assert) {
-  let volunteers = server.createList('volunteer', 2);
+  let volunteers = server.createList('volunteer', 1, {
+    name: "volunteerName",
+    status: 'statusCode',
+    memberNumber: "1234"
+  });
   let disaster = server.create('disaster');
 	let site = server.create('site', { disaster, volunteers });
 
@@ -93,7 +97,10 @@ test('View volunteers roster on site', function(assert) {
 
   andThen(() => {
     assert.ok(find('.test-roster'), 'Roster header appears');
-    assert.equal(find('.test-volunteer-list > li').length, 2, 'List of volunteers visible');
+    assert.equal(find('.test-roster-row').length, 1, 'List of volunteers visible');
+    assert.equal(find('.test-volunteer-member-name').text(), 'volunteerName', 'Member name visible');
+    assert.equal(find('.test-volunteer-member-status').text(), 'statusCode', 'Member status visible');
+    assert.equal(find('.test-volunteer-member-number').text(), '1234', 'Member number visible');
   });
 });
 
@@ -109,9 +116,8 @@ test('No roster appears on site without volunteers', function(assert) {
 
   andThen(() => {
     assert.notOk(find('.test-roster').length > 0, 'Roster header doesnt appear');
-    assert.notOk(find('.test-volunteer-list').length > 0, 'Volunteer list doesnt appear');
+    assert.equal(find('.test-roster-row').length, 0, 'Volunteer list doesnt appear');
   });
-
 });
 
 test('View volunteer map on site page', function(assert) {

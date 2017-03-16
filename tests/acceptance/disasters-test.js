@@ -1,4 +1,4 @@
-import { test,skip } from 'qunit';
+import { test } from 'qunit';
 import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance';
 import page from 'crosscheck/tests/pages/disaster';
 

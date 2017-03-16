@@ -14,10 +14,8 @@
         <h4>Roster</h4>
     </div>
     <div class="card-copy test-roster">
-        <ul class="test-volunteer-list">
         {{#each model.volunteers as |volunteer|}}
-            <li>{{volunteer.memberNumber}}</li>
+            {{roster-row volunteer=volunteer}}
         {{/each}}
-        </ul>
     </div>
 {{/if}}

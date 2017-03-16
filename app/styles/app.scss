@@ -61,6 +61,20 @@ html {
       }
     }
 
+    .roster-row {
+      @extend .full-row;
+
+      .volunteer-name {
+        @include grid-column(4);
+      }
+      .volunteer-status {
+        @include grid-column(4);        
+      }
+      .volunteer-number {
+        @include grid-column(4);        
+      }
+    }
+
     .site {
       cursor: pointer;
     }
