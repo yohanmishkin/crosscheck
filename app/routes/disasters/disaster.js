@@ -26,8 +26,8 @@ export default Ember.Route.extend({
 					}
 
 					let tempSiteName = data[row][0];
-					if (tempSiteName && tempSiteName != 'Shift Name') {
-						let existingSite = self.get('currentModel.sites').mapBy('name').find((name) => { 
+					if (tempSiteName && tempSiteName !== 'Shift Name') {
+						let existingSite = self.get('currentModel.sites').mapBy('name').find((name) => {
 							return name === tempSiteName;
 						});
 

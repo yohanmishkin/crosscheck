@@ -100,6 +100,19 @@ test('View volunteers roster on site', function(assert) {
   let disaster = server.create('disaster');
 	let site = server.create('site', { disaster, volunteers });
 
+  let coords = {
+    latitude:40.7686973,
+    longitude:-73.9918181
+  };
+
+  register(this, 'service:geolocation', Service.extend({
+    getLocation() {
+      return new Ember.RSVP.Promise((resolve) => { 
+        resolve({coords});
+      });
+    }
+  }));
+  
   sitePage
     .visit({
       disaster_id: disaster.id, 
