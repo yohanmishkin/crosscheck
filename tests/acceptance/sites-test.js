@@ -70,6 +70,7 @@ test('Volunteer can check into site', function(assert) {
     assert.equal(find('.test-volunteer-member-name').text(), 'Charles Beasley Sines', 'Member name visible');
     assert.equal(find('.test-volunteer-member-status').text(), 'Supervisor', 'Member status visible');
     assert.equal(find('.test-volunteer-member-number').text(), '121212', 'Member number visible');
+    assert.equal(find('.checked-in').length, 1, 'Volunteer has checked-in style');
   });
 });
 

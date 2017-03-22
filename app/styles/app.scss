@@ -73,6 +73,11 @@ html {
       .volunteer-number {
         @include grid-column(4);        
       }
+
+    }
+    
+    .checked-in {
+      color: $green;
     }
 
     .site {

@@ -27,6 +27,7 @@ export default Ember.Route.extend({
 
 					let tempSiteName = data[row][0];
 					if (tempSiteName && tempSiteName !== 'Shift Name') {
+
 						let existingSite = self.get('currentModel.sites').mapBy('name').find((name) => {
 							return name === tempSiteName;
 						});
@@ -49,10 +50,8 @@ export default Ember.Route.extend({
 
 							existingSite.get('volunteers').pushObject(volunteer);
 
-							volunteer.save().then(() => {
-								existingSite.save().then(() => {
-									self.get('currentModel').save();
-								});
+							self.get('save')(volunteer, existingSite).then(() => {
+								self.get('currentModel').save();
 							});
 						}
 					}
@@ -61,5 +60,11 @@ export default Ember.Route.extend({
 
 			reader.readAsText(event[0]);
 		}
+	},
+
+	save(volunteer, existingSite) {
+		return volunteer.save().then(() => {
+			return existingSite.save();
+		});
 	}
 });
