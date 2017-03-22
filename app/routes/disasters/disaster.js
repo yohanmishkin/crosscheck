@@ -42,10 +42,12 @@ export default Ember.Route.extend({
 
 						let tempName = data[row][5];
 						let tempStatus = data[row][7];
+						let tempPhone = data[row][9];
 						if (tempName) {
 							let volunteer = self.get('store').createRecord('volunteer', {
 								name: tempName,
 								status: tempStatus,
+								phone: tempPhone
 							});
 
 							existingSite.get('volunteers').pushObject(volunteer);
