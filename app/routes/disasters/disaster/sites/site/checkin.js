@@ -14,15 +14,12 @@ export default Ember.Route.extend({
                 volunteer.set('latitude', loc.coords.latitude);
                 volunteer.set('longitude', loc.coords.longitude);
                 volunteer.set('isCheckedIn', true);
-                
+
                 let site = this.modelFor('disasters.disaster.sites.site');
                 volunteer.set('site', site);
 
-                return volunteer.save().then((savedVolunteer) => {
-                    site.get('volunteers').pushObject(savedVolunteer);
-                    return site.save().then(() => {
-                        return this.transitionTo('disasters.disaster', this.modelFor('disasters.disaster').get('id'));
-                    });
+                site.save().then((savedSite) => {
+                    return this.transitionTo('disasters.disaster', this.modelFor('disasters.disaster').get('id'));
                 });
             }, (reason) => {
                 console.log(`Geolocation failed: ${reason}`);
