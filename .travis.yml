@@ -30,3 +30,7 @@ install:
 
 script:
   - npm test
+
+deploy:
+  provider: script
+  script: ember deploy production
