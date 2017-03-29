@@ -18,7 +18,7 @@ export default Ember.Route.extend({
 			reader.onloadend = function() {
 				
 				let csv = reader.result;
-				let data = $.csv.toArrays(csv);
+				let data = Ember.$.csv.toArrays(csv);
 				
 				for (var row in data) {
 					if (row === 0) { // headers
@@ -28,9 +28,9 @@ export default Ember.Route.extend({
 					let tempSiteName = data[row][0];
 					if (tempSiteName && tempSiteName !== 'Shift Name') {
 
-						let existingSite = self.get('currentModel.sites').mapBy('name').find((name) => {
-							return name === tempSiteName;
-						});
+						let existingSite = self.get('currentModel.sites')
+							.filterBy('name', tempSiteName)
+							.get('firstObject');
 
 						if (!existingSite) {
 							existingSite = self.get('store').createRecord('site', {
@@ -52,9 +52,7 @@ export default Ember.Route.extend({
 
 							existingSite.get('volunteers').pushObject(volunteer);
 
-							self.get('save')(volunteer, existingSite).then(() => {
-								self.get('currentModel').save();
-							});
+							self.get('save')(volunteer, existingSite);
 						}
 					}
 				}
