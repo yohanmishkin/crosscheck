@@ -9,12 +9,13 @@ export default DS.Model.extend({
     latitude: DS.attr('number'),
     longitude: DS.attr('number'),
     isCheckedIn: DS.attr('boolean'),
+    timeCheckedIn: DS.attr('date'),
     site: DS.belongsTo('site'),
     marker: Ember.computed('latitude', 'longitude', function() {
-		return {
-			id: this.get('id'),
-			lat: this.get('latitude'),
-			lng: this.get('longitude')
-		};
-	})
+      return {
+        id: this.get('id'),
+        lat: this.get('latitude'),
+        lng: this.get('longitude')
+      };
+    })
 });

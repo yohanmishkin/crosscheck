@@ -14,6 +14,7 @@ export default Ember.Route.extend({
                 volunteer.set('latitude', loc.coords.latitude);
                 volunteer.set('longitude', loc.coords.longitude);
                 volunteer.set('isCheckedIn', true);
+                volunteer.set('timeCheckedIn', new Date());
 
                 let site = this.modelFor('disasters.disaster.sites.site');
                 volunteer.set('site', site);

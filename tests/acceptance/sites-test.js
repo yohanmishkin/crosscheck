@@ -61,6 +61,7 @@ test('Volunteer can check into site', function(assert) {
     assert.equal(currentURL(), `/disasters/${disaster.id}`, 'Navigated back to site disaster page');
     assert.equal(find('.test-site-checkins').text(), 1, 'Checkin badge incremented');
     assert.equal(server.db.volunteers[0].siteId, site.id, 'volunteer were added to site');
+    assert.ok(server.db.volunteers[0].timeCheckedIn, 'volunteer check in timestamp');
   });
 
   sitePage
@@ -95,8 +96,8 @@ test('View volunteers roster on site', function(assert) {
   let volunteers = server.createList('volunteer', 1, {
     name: "volunteerName",
     status: 'statusCode',
-    memberNumber: "1234",
-    isCheckedIn: false
+    isCheckedIn: false,
+    timeCheckedIn: new Date('2012-12-12 12:00')
   });
   let disaster = server.create('disaster');
 	let site = server.create('site', { disaster, volunteers });
@@ -125,7 +126,7 @@ test('View volunteers roster on site', function(assert) {
     assert.equal(find('.test-roster-row').length, 1, 'List of volunteers visible');
     assert.equal(find('.test-volunteer-member-name').text(), 'volunteerName', 'Member name visible');
     assert.equal(find('.test-volunteer-member-status').text(), 'statusCode', 'Member status visible');
-    assert.equal(find('.test-volunteer-member-number').text(), '1234', 'Member number visible');
+    assert.equal(find('.test-volunteer-time-checked-in').text(), '12:00 PM', 'Check in time visible');
   });
 
   sitePage
