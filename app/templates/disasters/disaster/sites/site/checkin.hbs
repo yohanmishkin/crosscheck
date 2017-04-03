@@ -2,7 +2,7 @@
 <div class="full-row">
     {{input value=model.name placeholder='Name' class='checkin-member-name model-input'}}
     {{input value=model.memberNumber placeholder='Member #' class='checkin-member-number model-input'}}
-    {{input value=model.phone placeholder='Phone' class='checkin-member-phone model-input'}}
+    {{phone-number-input unmaskedValue=model.phone placeholder='Phone #' extensions=false class='checkin-member-phone model-input'}}
     {{input value=model.status placeholder='Gap' class='checkin-member-gap model-input'}}
     {{async-button action=(route-action "save" model) default="Check in" pending="Checking in..." class="checkin-submit"}}
 </div>

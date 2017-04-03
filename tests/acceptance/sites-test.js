@@ -96,6 +96,7 @@ test('View volunteers roster on site', function(assert) {
   let volunteers = server.createList('volunteer', 1, {
     name: "volunteerName",
     status: 'statusCode',
+    phone: '123-123-1234',
     isCheckedIn: false,
     timeCheckedIn: new Date('2012-12-12 12:00')
   });
@@ -127,6 +128,7 @@ test('View volunteers roster on site', function(assert) {
     assert.equal(find('.test-volunteer-member-name').text(), 'volunteerName', 'Member name visible');
     assert.equal(find('.test-volunteer-member-status').text(), 'statusCode', 'Member status visible');
     assert.equal(find('.test-volunteer-time-checked-in').text(), '12:00 PM', 'Check in time visible');
+    assert.equal(find(`a[href="tel:${volunteers[0].phone}"]`).length, 1, 'Phone number link made');
   });
 
   sitePage
