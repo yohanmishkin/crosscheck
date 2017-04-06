@@ -37,6 +37,15 @@ module.exports = function(environment) {
     libraries: ['places'] 
   }
 
+  ENV.firebase = {
+    apiKey: "AIzaSyA-emSPESut2bzK0ZblVrdAVIwamiEDjQA",
+    authDomain: "crosscheck-158905.firebaseapp.com",
+    databaseURL: "https://crosscheck-158905.firebaseio.com",
+    projectId: "crosscheck-158905",
+    storageBucket: "crosscheck-158905.appspot.com",
+    messagingSenderId: "362907193937"
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
