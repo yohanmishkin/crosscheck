@@ -105,6 +105,11 @@ html {
         @extend .disaster;
         font-size: 1.2em;
       }
+
+      .login-link {
+        font-size: 0.95em;
+        padding-bottom: 14px;
+      }
     }
   }
 }

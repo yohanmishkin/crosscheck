@@ -1,10 +1,21 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance';
 import page from 'crosscheck/tests/pages/disaster';
+import { authenticateSession } from 'crosscheck/tests/helpers/ember-simple-auth';
 
 moduleForAcceptance('Acceptance | disasters');
 
+test('visiting /disasters, unauthenticated', function(assert) {
+  visit('/');
+
+  andThen(() => {
+    assert.equal(currentURL(), '/');
+    assert.ok(find('.login-link'), 'Login link appears');
+  });
+});
+
 test('visiting /disasters, no disasters', function(assert) {
+  authenticateSession(this.application);
   visit('/');
 
   andThen(() => {
@@ -16,6 +27,7 @@ test('visiting /disasters, no disasters', function(assert) {
 });
 
 test('create new disaster', function(assert) {
+  authenticateSession(this.application);
 	visit('/');
 
 	click('.test-disaster-create-new');
@@ -44,6 +56,7 @@ test('create new disaster', function(assert) {
 });
 
 test('quit creating new disaster and return to existing disasters', function(assert) {
+  authenticateSession(this.application);
 	visit('/');
 
 	click('.test-disaster-create-new');
