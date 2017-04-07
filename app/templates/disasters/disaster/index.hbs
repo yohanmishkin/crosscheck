@@ -9,25 +9,27 @@
 			<h4>Work sites</h4>
 		</div>
 		<div class="card-copy">
-			<ul class="test-sites-list">
-			{{#each model.sites as |site|}}
-				<li>
-					{{link-to site.name 'disasters.disaster.sites.site' site.disaster.id site.id class='test-site-link site'}}
-					<span class="no-checkins">
-						{{fa-icon 'check' class='test-site-no-checkins'}}
-						<span class='test-site-no-checkins'>
-							{{if site.hasNotCheckIns site.volunteersNotCheckedIn.length "-"}}
-						</span>
-					</span>
-					<span class="checkins">
-						{{fa-icon 'check'}}
-						<span class='test-site-checkins'>
-							{{if site.hasCheckIns site.volunteersCheckedIn.length "-"}}
-						</span>
-					</span>
-				</li>
-			{{/each}}
-			</ul>
+			<div class="sites-list test-sites-list">
+				{{#each model.sites as |site|}}
+					<div class="site-name">
+						{{link-to site.name 'disasters.disaster.sites.site' site.disaster.id site.id class='test-site-link site'}}
+					</div>
+					<div class="site-status">
+						<div class="checkins">
+							{{fa-icon 'check'}}
+							<span class='test-site-checkins'>
+								{{if site.hasCheckIns site.volunteersCheckedIn.length "-"}}
+							</span>
+						</div>
+						<div class="no-checkins">
+							{{fa-icon 'check' class='test-site-no-checkins'}}
+							<span class='test-site-no-checkins'>
+								{{if site.hasNotCheckIns site.volunteersNotCheckedIn.length "-"}}
+							</span>
+						</div>
+					</div>
+				{{/each}}
+			</div>
 		</div>
 	</div>
 	{{link-to 'Add another work site' 'disasters.disaster.sites.new' model class="another-site test-disaster-create-site"}}

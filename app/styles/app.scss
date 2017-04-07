@@ -141,20 +141,35 @@ html {
     margin: 0 0 $base-spacing;
 }
 
-.checkins {
-  float: right;
-  margin-right: 6px;
 
-  i {
-    color: $green;
+$site-list-thirds: (
+  columns: 3,
+  gutter: 10px,
+);
+
+.sites-list {
+  @include grid-container($site-list-thirds);
+
+  .site-name {
+    @include grid-column(2, $site-list-thirds);
   }
-}
 
-.no-checkins {
-  float: right;
+  .site-status {
+    @include grid-column(1, $site-list-thirds);
+  }
 
-  i {
-    color: $red;
+  .checkins {
+    display: inline-block;
+    i {
+      color: $green;
+    }
+  }
+
+  .no-checkins {
+    display: inline-block;    
+    i {
+      color: $red;
+    }
   }
 }
 
