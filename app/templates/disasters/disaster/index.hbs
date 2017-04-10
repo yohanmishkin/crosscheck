@@ -32,10 +32,21 @@
 			</div>
 		</div>
 	</div>
-	{{link-to 'Add another work site' 'disasters.disaster.sites.new' model class="another-site test-disaster-create-site"}}
-{{else}}
-	{{link-to 'Create first work site' 'disasters.disaster.sites.new' model class="test-disaster-create-site"}}
 {{/if}}
-{{roster-uploader}}
+
+{{#if session.isAuthenticated}}
+	{{#if model.sites}}
+		{{link-to 'Add another work site' 'disasters.disaster.sites.new' model class="another-site test-disaster-create-site"}}
+	{{else}}
+		{{link-to 'Create first work site' 'disasters.disaster.sites.new' model class="test-disaster-create-site"}}
+	{{/if}}
+
+	{{roster-uploader}}
+{{else}}
+    {{#link-to 'login'}}
+        <p class='login-link'>Please login to add sites and upload rosters</p>
+    {{/link-to}}
+{{/if}}
+
 
 {{liquid-outlet}}

@@ -5,12 +5,14 @@ import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance'
 import disasterPage from 'crosscheck/tests/pages/disaster';
 import sitePage from 'crosscheck/tests/pages/site';
 import checkinPage from 'crosscheck/tests/pages/checkin';
+import { authenticateSession } from 'crosscheck/tests/helpers/ember-simple-auth';
 
 const { Service } = Ember;
 
 moduleForAcceptance('Acceptance | disasters/edit/sites');
 
 test('Can navigate to site page', function(assert) {
+  authenticateSession(this.application);
   let disaster = server.create('disaster', { name: 'Hurricane Daniel', slug: 'hurricane-daniel' });
   let site = server.create('site', { name: 'Ticonderoga', location: '12 Candy Lane', disaster });
 
@@ -26,6 +28,7 @@ test('Can navigate to site page', function(assert) {
 });
 
 test('Volunteer can check into site', function(assert) {
+  authenticateSession(this.application);  
   let disaster = server.create('disaster', { name: 'Hurricane Daniel', slug: 'hurricane-daniel' });
   let site = server.create('site', { name: 'Ticonderoga', location: '12 Candy Lane', disaster });
 
@@ -75,6 +78,7 @@ test('Volunteer can check into site', function(assert) {
 });
 
 test('Deactivates model if you navigate away from new site page', function(assert) {
+  authenticateSession(this.application);  
 	let disaster = server.create('disaster');
 	server.create('site', { disaster });
 
@@ -92,6 +96,7 @@ test('Deactivates model if you navigate away from new site page', function(asser
 });
 
 test('View volunteers roster on site', function(assert) {
+  authenticateSession(this.application);
   let volunteers = server.createList('volunteer', 1, {
     name: "volunteerName",
     status: 'statusCode',
@@ -168,6 +173,7 @@ test('No roster appears on site without volunteers', function(assert) {
 });
 
 test('View volunteer map on site page', function(assert) {
+  authenticateSession(this.application);
   let volunteers = server.createList('volunteer', 1, {
     latitude:40.7686973,
     longitude:-73.9918181

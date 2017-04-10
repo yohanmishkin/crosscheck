@@ -7,7 +7,6 @@ moduleForAcceptance('Acceptance | disasters');
 
 test('visiting /disasters, unauthenticated', function(assert) {
   visit('/');
-
   andThen(() => {
     assert.equal(currentURL(), '/');
     assert.ok(find('.login-link'), 'Login link appears');
@@ -84,10 +83,10 @@ test('quit creating new disaster and return to existing disasters', function(ass
 });
 
 test('can create work site', function(assert) {
+  authenticateSession(this.application);
 	let disaster = server.create('disaster', { name: 'Hurricane Charles' });
 
 	visit('/');
-
 	click('.test-disasters-list > a:first');
 	
 	andThen(() => {

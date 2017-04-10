@@ -5,7 +5,7 @@
 			{{#link-to "disasters.disaster" disaster}}
 				<li class='disaster'>{{disaster.name}}</li>
 			{{/link-to}}
-		{{/each}}}}
+		{{/each}}
 		
 		{{#if session.isAuthenticated}}
 			{{#link-to 'disasters.new' class='test-disaster-create-new'}}
