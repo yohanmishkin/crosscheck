@@ -1,10 +1,17 @@
 <h4>Check in</h4>
+
 <div class="full-row">
-    <p>Please enter your name or volunteer member id #</p>
+    <p>Please enter your name or volunteer member #</p>
 </div>
+
 <div class="full-row">
     {{input value=volunteer.name placeholder='Name' class='checkin-member-name model-input'}}
     {{input value=volunteer.memberNumber placeholder='Member #' class='checkin-member-number model-input'}}
     {{phone-number-input unmaskedValue=volunteer.phone placeholder='Phone #' extensions=false class='checkin-member-phone model-input'}}
-    {{async-button action=(action "save" volunteer) default="Check in" pending="Checking in..." class="checkin-submit"}}
+    {{async-button 
+        default="Check in" 
+        pending="Checking in..." 
+        action=(action "save" volunteer) 
+        disabled=volunteer.isInvalid
+        class="checkin-submit" }}
 </div>
