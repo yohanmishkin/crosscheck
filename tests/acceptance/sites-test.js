@@ -57,7 +57,6 @@ test('Volunteer can check into site', function(assert) {
     .memberName('Charles Beasley Sines')
     .memberNumber('121212')
     .memberPhone('123-456-7899')
-    .memberGap('Supervisor')
     .submit();
 
   andThen(() => {
@@ -72,7 +71,6 @@ test('Volunteer can check into site', function(assert) {
 
   andThen(function() {
     assert.equal(find('.test-volunteer-member-name').text(), 'Charles Beasley Sines', 'Member name visible');
-    assert.equal(find('.test-volunteer-member-status').text(), 'Supervisor', 'Member status visible');
     assert.equal(find('.checked-in').length, 1, 'Volunteer has checked-in style');
   });
 });
@@ -130,7 +128,6 @@ test('View volunteers roster on site', function(assert) {
     assert.ok(find('.test-roster'), 'Roster header appears');
     assert.equal(find('.test-roster-row').length, 1, 'List of volunteers visible');
     assert.equal(find('.test-volunteer-member-name').text(), 'volunteerName', 'Member name visible');
-    assert.equal(find('.test-volunteer-member-status').text(), 'statusCode', 'Member status visible');
     assert.equal(find('.test-volunteer-time-checked-in').text(), '12:00 PM', 'Check in time visible');
     assert.equal(find(`a[href="tel:${volunteers[0].phone}"]`).length, 1, 'Phone number link made');
   });
@@ -146,7 +143,6 @@ test('View volunteers roster on site', function(assert) {
     .memberName('Charles Beasley Sines')
     .memberNumber('121212')
     .memberPhone('123-456-7899')
-    .memberGap('Supervisor')
     .submit();
 
     andThen(() => {

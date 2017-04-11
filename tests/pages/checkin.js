@@ -10,6 +10,5 @@ export default create({
   memberNumber: fillable('.checkin-member-number'),
   memberName: fillable('.checkin-member-name'),
   memberPhone: fillable('.checkin-member-phone'),
-  memberGap: fillable('.checkin-member-gap'),
   submit: clickable('.checkin-submit')
 });
