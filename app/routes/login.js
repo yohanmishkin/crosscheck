@@ -6,20 +6,19 @@ export default Ember.Route.extend({
         return this.get('session').fetch().catch(() => {});
     },
     actions: {
-        login() {
+        logIn() {
             this.get('session')
                 .open('firebase', {
                     provider: 'password',
-                    email: 'email@gmail.com',
-                    password: 'password'
+                    email: 'tfjebb@gmail.com',
+                    password: 'temptemp'
                 }).then(data => {
-                    /* setting uid in service for later retrieval elsewhere */
-                    debugger;
+                    console.log(data);
                     this.transitionTo('disasters');
                 });
         },
-        signOut() {
-            this.get('session').close().then(() => this.transitionTo('application'));
+        logOut() {
+            this.get('session').close().then(() => this.transitionTo('disasters'));
         }
     }
 });
