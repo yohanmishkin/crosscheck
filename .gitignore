@@ -19,3 +19,4 @@ testem.log
 *.env
 
 .env.deploy.*
+mirage/static/marathon roster.csv

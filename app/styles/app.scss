@@ -74,10 +74,9 @@ html {
       .volunteer-status {
         @include grid-column(4);        
       }
-      .volunteer-number {
+      .volunteer-time-checked-in {
         @include grid-column(4);        
       }
-
     }
     
     .checked-in {

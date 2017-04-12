@@ -1,11 +1,8 @@
 <h5 class="test-site-name">{{model.name}}</h5>
 <h6 class="test-site-location">{{model.location}}</h6>
 
-{{link-to 'Check in' 'disasters.disaster.sites.site.checkin' model.disaster.id model.id class='test-site-checkin'}}
-
 {{#if session.isAuthenticated}}
     {{#if model.volunteers}}
-        <hr>
         <div class="card">
             <div class="card-map test-map">
                 {{g-maps-fit name='volunteer-map' markers=markers class='volunteer-map test-volunteer-map'}}
@@ -21,6 +18,8 @@
         </div>
     {{/if}}
 {{else}}
+    {{link-to 'Check in' 'disasters.disaster.sites.site.checkin' model.disaster.id model.id class='test-site-checkin'}}
+
     <hr>
     {{#link-to 'login'}}
         <p class='login-link'>Please login to view roster</p>

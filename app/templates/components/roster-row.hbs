@@ -1,7 +1,6 @@
 <a href={{concat 'tel:' volunteer.phone}} class='test-volunteer-phone'>
     <div class='roster-row {{if volunteer.isCheckedIn 'checked-in'}} test-roster-row'>
         <div class="volunteer-name test-volunteer-member-name">{{volunteer.name}}</div>
-        <div class="volunteer-status test-volunteer-member-status">{{volunteer.status}}</div>
-        <div class="volunteer-number test-volunteer-time-checked-in">{{moment-format volunteer.timeCheckedIn 'h:mm A'}}</div>
+        <div class="volunteer-time-checked-in test-volunteer-time-checked-in">{{if volunteer.isCheckedIn (moment-format volunteer.timeCheckedIn 'h:mm A') '-'}}</div>        
     </div>
 </a>
