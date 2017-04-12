@@ -37,6 +37,10 @@ html {
     cursor: pointer;
   }
 
+  h4 {
+    margin-bottom: 0px;
+  }
+
   h6 {
     font-weight: inherit;
   }
@@ -67,15 +71,20 @@ html {
 
     .roster-row {
       @extend .full-row;
+      font-size: 0.9em;
+      color: $dark-gray;
 
       .volunteer-name {
-        @include grid-column(4);
-      }
-      .volunteer-status {
-        @include grid-column(4);        
+        @include grid-column(5);
       }
       .volunteer-time-checked-in {
-        @include grid-column(4);        
+        @include grid-column(2);        
+      }
+      .volunteer-call {
+        @include grid-column(1);
+      }
+      .volunteer-check {
+        @include grid-column(4);
       }
     }
     
