@@ -26,6 +26,7 @@ export default Ember.Route.extend({
 					}
 
 					let tempSiteName = data[row][0];
+					let tempAddress = data[row][10];
 					if (tempSiteName && tempSiteName !== 'Shift Name') {
 
 						let existingSite = self.get('currentModel.sites')
@@ -34,8 +35,8 @@ export default Ember.Route.extend({
 
 						if (!existingSite) {
 							existingSite = self.get('store').createRecord('site', {
-								name: tempSiteName
-								// location: 
+								name: tempSiteName,
+								location: tempAddress
 							});
 							self.get('currentModel.sites').pushObject(existingSite);
 							self.get('currentModel').save();

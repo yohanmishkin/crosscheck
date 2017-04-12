@@ -3,6 +3,7 @@ module.exports = function(deployTarget) {
     pagefront: {
       app: 'crosscheck',
       key: process.env.PAGEFRONT_KEY
-    }
+    },
+    
   };
 };

@@ -19,7 +19,7 @@
 	</ul>
 </div>
 {{#if session.isAuthenticated}}
-	<span {{action "logOut"}}>Log out</span>
+	<button {{action "logOut"}} class='logout-link'>Log out</button>
 {{/if}}
 
 {{liquid-outlet}}

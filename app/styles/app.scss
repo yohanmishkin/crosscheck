@@ -92,7 +92,9 @@ html {
       color: $green;
     }
 
-    .site {
+    .site, 
+    .logout-link,
+    .login-link {
       cursor: pointer;
     }
 
