@@ -7,18 +7,16 @@ export default Ember.Route.extend({
     },
     actions: {
         logIn() {
+            let controller = this.get('controller');
             this.get('session')
                 .open('firebase', {
                     provider: 'password',
-                    email: 'tfjebb@gmail.com',
-                    password: 'temptemp'
+                    email: controller.get('email'),
+                    password: controller.get('password')
                 }).then(data => {
                     console.log(data);
                     this.transitionTo('disasters');
                 });
-        },
-        logOut() {
-            this.get('session').close().then(() => this.transitionTo('disasters'));
         }
     }
 });

@@ -1,5 +1,12 @@
-{{#if session.isAuthenticated}}
-    <button {{action "logOut"}}>Log out</button>
-{{else}}
-    <button {{action "logIn"}}>Log in</button>
-{{/if}}
+<h4>Log in</h4>
+<div class="full-row">
+    <form {{action "logIn" on='submit'}}>
+        <div class="list-group-item">
+            {{input value=email type="email" placeholder="Email" class="form-control no-border"}}
+        </div>
+        <div class="list-group-item">
+            {{input value=password type="password" placeholder="Password" class="form-control no-border"}}
+        </div>
+    <button type='submit'>Log in</button>
+    </form>
+</div>

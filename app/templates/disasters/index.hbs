@@ -18,5 +18,8 @@
 		{{/if}}
 	</ul>
 </div>
+{{#if session.isAuthenticated}}
+	<span {{action "logOut"}}>Log out</span>
+{{/if}}
 
 {{liquid-outlet}}
