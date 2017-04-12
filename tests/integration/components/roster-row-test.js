@@ -34,3 +34,24 @@ test('Checked-in volunteer renders', function(assert) {
   assert.equal(this.$('.test-volunteer-time-checked-in').text().trim(), '12:00 PM', 'Checkin time displays');
   assert.equal(this.$('.test-checkout-link').length, 1, 'Checkout link appears');
 });
+
+test('Triggers checkin on checkin link click', function(assert) {
+
+  // test double for the external action
+  this.set('save', (actual) => {
+    debugger;
+    let expected = { comment: 'You are not a wizard!' };
+    assert.deepEqual(actual, expected, 'submitted value is passed to external action');
+  });
+
+  let volunteer = Ember.Object.create({
+    name: 'Charlie Sines',
+    isCheckedIn: false
+  });
+  this.set('volunteer', volunteer);
+
+  this.render(hbs`{{roster-row volunteer=volunteer checkIn=(action 'save')}}`);
+
+  // click the button to submit the form
+  this.$('.test-checkin-link').click();
+});
