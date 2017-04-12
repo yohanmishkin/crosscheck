@@ -34,20 +34,23 @@ export default Ember.Route.extend({
 
 						if (!existingSite) {
 							existingSite = self.get('store').createRecord('site', {
-								name: tempSiteName,
-								location: 'NYC'
+								name: tempSiteName
+								// location: 
 							});
 							self.get('currentModel.sites').pushObject(existingSite);
+							self.get('currentModel').save();
 						}
 
 						let tempName = data[row][5];
 						let tempStatus = data[row][7];
 						let tempPhone = data[row][9];
+
 						if (tempName) {
 							let volunteer = self.get('store').createRecord('volunteer', {
 								name: tempName,
 								status: tempStatus,
-								phone: tempPhone
+								phone: tempPhone,
+								isCheckedIn: false
 							});
 
 							existingSite.get('volunteers').pushObject(volunteer);
