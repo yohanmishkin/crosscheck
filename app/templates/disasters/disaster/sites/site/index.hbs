@@ -5,7 +5,12 @@
     {{#if model.volunteers}}
         <div class="card">
             <div class="card-map test-map">
-                {{g-maps-fit name='volunteer-map' markers=markers class='volunteer-map test-volunteer-map'}}
+                {{g-maps-fit 
+                    name='volunteer-map' 
+                    markers=markers
+                    showZoomControl=false
+				    showMapTypeControl=false
+				    class='volunteer-map test-volunteer-map'}}
             </div>
         </div>
         <div class="card-header">
