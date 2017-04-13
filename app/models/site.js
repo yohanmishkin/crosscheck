@@ -15,6 +15,12 @@ export default DS.Model.extend({
 		return this.get('volunteersCheckedIn.length');
 	}),
 	hasCheckIns: Ember.computed.gt('checkInCount', 0),
+
+	volunteersCheckedOut: Ember.computed.filterBy('volunteers', 'isCheckedOut', true),
+	checkOutCount: Ember.computed('volunteersCheckedOut', function() {
+		return this.get('volunteersCheckedOut.length');
+	}),
+	hasCheckOuts: Ember.computed.gt('checkOutCount', 0),
 	
 	volunteersNotCheckedIn: Ember.computed.filterBy('volunteers', 'isCheckedIn', false),
 	notCheckInCount: Ember.computed('volunteersNotCheckedIn', function() {
