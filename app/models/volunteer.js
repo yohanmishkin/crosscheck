@@ -11,6 +11,8 @@ export default DS.Model.extend({
     longitude: DS.attr('number'),
     isCheckedIn: DS.attr('boolean'),
     timeCheckedIn: DS.attr('date'),
+    isCheckedOut: DS.attr('boolean'),
+    timeCheckedOut: DS.attr('date'),
     
     site: DS.belongsTo('site'),
 

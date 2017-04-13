@@ -2,8 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     actions: {
-        checkIn() {
-            this.get('save')(volunteer);
+        checkIn(volunteer) {
+            volunteer.set('isCheckedIn', true);
+            volunteer.set('timeCheckedIn', new Date());
+            this.get('checkIn')(volunteer);
+        },
+        checkOut(volunteer) {
+            volunteer.set('isCheckedOut', true);
+            volunteer.set('timeCheckedOut', new Date());            
+            this.get('checkOut')(volunteer);
         }
     }
 });

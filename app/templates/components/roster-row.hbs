@@ -1,13 +1,15 @@
-<div class='roster-row {{if volunteer.isCheckedIn 'checked-in'}} test-roster-row'>
+<div class='roster-row {{if volunteer.isCheckedOut 'checked-out' (if volunteer.isCheckedIn 'checked-in')}} test-roster-row'>
     <hr>
     <div class="volunteer-name test-volunteer-member-name">{{volunteer.name}}</div>
     <div class="volunteer-time-checked-in test-volunteer-time-checked-in">{{if volunteer.isCheckedIn (moment-format volunteer.timeCheckedIn 'h:mm A') '-'}}</div>        
-    <a href={{concat 'tel:' volunteer.phone}} class='volunteer-call test-volunteer-phone'>Call</a>
-    <div class='volunteer-check'>
-        {{#if volunteer.isCheckedIn}}
-            <a {{action 'checkOut'}} class='volunteer-action test-checkout-link'>Check out</a>
-        {{else}}
-            <a {{action 'checkIn'}} class='volunteer-action test-checkin-link'>Check in</a>    
-        {{/if}}
-    </div>
+    <a href={{concat 'tel:' volunteer.phone}} class='volunteer-call test-volunteer-phone'>Phone</a>
+    {{#unless volunteer.isCheckedOut}}
+        <div class='volunteer-check'>
+            {{#if volunteer.isCheckedIn}}
+                <a {{action 'checkOut' volunteer}} class='volunteer-action test-checkout-link'>Check out</a>
+            {{else}}
+                <a {{action 'checkIn' volunteer}} class='volunteer-action test-checkin-link'>Check in</a>    
+            {{/if}}
+        </div>
+    {{/unless}}
 </div>
