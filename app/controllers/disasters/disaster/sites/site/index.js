@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
             });
         },
         checkOut(volunteer) {
-            console.log('check out');
+            volunteer.save();
         }
     }
 });

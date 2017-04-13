@@ -6,5 +6,8 @@
     <div class="list-group-item">
         {{input value=password type="password" placeholder="Password" class="form-control no-border"}}
     </div>
-    <button href="" {{action "logIn"}} class="login-link">Log in</button>
+    {{async-button 
+        default="Log in"
+        pending="Logging in..." 
+        action=(route-action "logIn")}}
 </div>
