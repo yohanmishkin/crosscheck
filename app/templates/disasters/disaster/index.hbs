@@ -1,4 +1,19 @@
 {{inline-edit value=model.name tagName='h3' class="test-disaster-edit-name" save=(route-action 'save')}}
+<div class='disaster-status'>
+	<div class='disaster-no-checkins'>
+		{{fa-icon 'check' size='lg'}}
+		{{if model.hasNotCheckIns model.volunteersNotCheckedIn "-"}}
+	</div>
+	<div class='disaster-checkins'>
+		{{fa-icon 'check' size='lg'}}
+		{{if model.hasCheckIns model.volunteersCheckedIn "-"}}
+	</div>
+	<div class='disaster-checkouts'>
+		{{fa-icon 'check' size='lg'}}
+		{{if model.hasCheckOuts model.volunteersCheckedOut "-"}}		
+	</div>
+</div>
+
 
 {{#if model.sites}}
 	 <div class="card">

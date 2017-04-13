@@ -180,6 +180,34 @@ $site-list-thirds: (
   gutter: 0px,
 );
 
+.disaster-status {
+  @include grid-container($site-list-thirds);
+  max-width: 650px;
+  margin-bottom: 12px;  
+
+  div {
+    @include grid-column(1, $site-list-thirds);    
+  }
+
+  .disaster-checkins {
+    i {
+      color: $green;
+    }
+  }
+
+  .disaster-checkouts {
+    i {
+      color: $blue;
+    }
+  }
+
+  .disaster-no-checkins {
+    i {
+      color: $red;
+    }
+  }
+}
+
 .site-row {
   @include grid-container;
 }
