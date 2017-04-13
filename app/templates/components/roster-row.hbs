@@ -15,9 +15,9 @@
         {{#if volunteer.isCheckedOut}}
             <span class="end-of-day">Checked out</span>
         {{else if volunteer.isCheckedIn}}
-            <a {{action 'checkOut' volunteer}} class='volunteer-action test-checkout-link'>Check out</a>
+            <button {{action 'checkOut' volunteer}} class='volunteer-action test-checkout-link'>Check out</button>
         {{else}}
-            <a {{action 'checkIn' volunteer}} class='volunteer-action test-checkin-link'>Check in</a>    
+            <button {{action 'checkIn' volunteer}} class='volunteer-action test-checkin-link'>Check in</button> 
         {{/if}}
     </div>
 </div>
