@@ -16,21 +16,29 @@
 		<div class="card-copy">
 			<div class="sites-list test-sites-list">
 				{{#each model.sites as |site|}}
-					<div class="site-name">
-						{{link-to site.name 'disasters.disaster.sites.site' site.disaster.id site.id class='test-site-link site'}}
-					</div>
-					<div class="site-status">
-						<div class="checkins">
-							{{fa-icon 'check'}}
-							<span class='test-site-checkins'>
-								{{if site.hasCheckIns site.volunteersCheckedIn.length "-"}}
-							</span>
+					<div class='site-row'>
+						<div class="site-name">
+							{{link-to site.name 'disasters.disaster.sites.site' site.disaster.id site.id class='test-site-link site'}}
 						</div>
-						<div class="no-checkins">
-							{{fa-icon 'check' class='test-site-no-checkins'}}
-							<span class='test-site-no-checkins'>
-								{{if site.hasNotCheckIns site.volunteersNotCheckedIn.length "-"}}
-							</span>
+						<div class="site-status">
+							<div class="no-checkins">
+								{{fa-icon 'check' class='test-site-no-checkins'}}
+								<span class='test-site-no-checkins'>
+									{{if site.hasNotCheckIns site.volunteersNotCheckedIn.length "-"}}
+								</span>
+							</div>
+							<div class="checkins">
+								{{fa-icon 'check'}}
+								<span class='test-site-checkins'>
+									{{if site.hasCheckIns site.volunteersCheckedIn.length "-"}}
+								</span>
+							</div>
+							<div class="checkouts">
+								{{fa-icon 'check'}}
+								<span class='test-site-checkouts'>
+									{{if site.hasCheckOuts site.volunteersCheckedOut.length "-"}}
+								</span>
+							</div>
 						</div>
 					</div>
 				{{/each}}

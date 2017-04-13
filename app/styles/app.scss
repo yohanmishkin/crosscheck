@@ -75,16 +75,16 @@ html {
       color: $dark-gray;
 
       .volunteer-name {
-        @include grid-column(5);
+        @include grid-column(3);
       }
       .volunteer-time-checked-in {
-        @include grid-column(2);        
+        @include grid-column(3);        
       }
       .volunteer-call {
-        @include grid-column(1);
+        @include grid-column(3);
       }
       .volunteer-check {
-        @include grid-column(4);
+        @include grid-column(3);
       }
     }
     
@@ -94,6 +94,10 @@ html {
 
     .checked-out {
       color: $blue;
+    }
+
+    .end-of-day {
+      color: $medium-gray;
     }
 
     .site, 
@@ -166,31 +170,54 @@ html {
 }
 
 
-$site-list-thirds: (
-  columns: 3,
-  gutter: 10px,
+$site-list-quarters: (
+  columns: 7,
+  gutter: 2px,
 );
 
+$site-list-thirds: (
+  columns: 3,
+  gutter: 0px,
+);
+
+.site-row {
+  @include grid-container;
+}
+
 .sites-list {
-  @include grid-container($site-list-thirds);
+  @include grid-container($site-list-quarters);
 
   .site-name {
-    @include grid-column(2, $site-list-thirds);
+    @include grid-column(4, $site-list-quarters);
+    text-align: left;
   }
 
   .site-status {
-    @include grid-column(1, $site-list-thirds);
+    @include grid-column(3, $site-list-quarters);
+    @include grid-container($site-list-thirds);
+    // float: right;
+
+    div {
+      @include grid-column(1, $site-list-thirds);
+    }
   }
 
   .checkins {
-    display: inline-block;
+    text-align: center;    
     i {
       color: $green;
     }
   }
 
+  .checkouts {
+    text-align: right;    
+    i {
+      color: $blue;
+    }
+  }
+
   .no-checkins {
-    display: inline-block;    
+    text-align: left;
     i {
       color: $red;
     }
@@ -261,8 +288,8 @@ $site-list-thirds: (
     font-size: 0.9em;
     line-height: 1.5em;
     padding: ($base-spacing / 2) ($base-spacing / 2);
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
 
     p {
       margin: 0 0 ($base-spacing / 2);
