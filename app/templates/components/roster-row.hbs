@@ -10,7 +10,7 @@
             <span>-</span>
         {{/if}}
     </div>
-    <a href={{concat 'tel:' volunteer.phone}} class='volunteer-call test-volunteer-phone'>Phone</a>
+    <a href={{concat 'tel:+' volunteer.phone}} class='volunteer-call test-volunteer-phone'>Phone</a>
     <div class='volunteer-check'>
         {{#if volunteer.isCheckedOut}}
             <span class="end-of-day">Checked out</span>
