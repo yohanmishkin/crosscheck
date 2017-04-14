@@ -6,9 +6,6 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
-    torii: {
-      sessionServiceName: 'session'
-    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -23,30 +20,34 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    torii: {
+      sessionServiceName: 'session'
+    },
+
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+      'font-src': "'self' fonts.gstatic.com",
+      'connect-src': "'self' maps.gstatic.com",
+      'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
+    },
+
+    googleMap: {
+      apiKey: process.env.GOOGLE_PLACES_API_KEY,
+      libraries: ['places'] 
+    },
+
+    firebase: {
+      apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: "crosscheck-158905.firebaseapp.com",
+      databaseURL: "https://crosscheck-158905.firebaseio.com",
+      projectId: "crosscheck-158905",
+      storageBucket: "crosscheck-158905.appspot.com",
+      messagingSenderId: "362907193937"
     }
-  };
-
-  ENV.contentSecurityPolicy = {
-    'default-src': "'none'",
-    'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
-    'font-src': "'self' fonts.gstatic.com",
-    'connect-src': "'self' maps.gstatic.com",
-    'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com",
-    'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
-  };
-
-  ENV.googleMap = {
-    apiKey: 'AIzaSyDS4x8LZnOkJtEDGDBy5dZ9VK40qRFVbsM',
-    libraries: ['places'] 
-  }
-
-  ENV.firebase = {
-    apiKey: "AIzaSyA-emSPESut2bzK0ZblVrdAVIwamiEDjQA",
-    authDomain: "crosscheck-158905.firebaseapp.com",
-    databaseURL: "https://crosscheck-158905.firebaseio.com",
-    projectId: "crosscheck-158905",
-    storageBucket: "crosscheck-158905.appspot.com",
-    messagingSenderId: "362907193937"
   };
 
   if (environment === 'development') {
