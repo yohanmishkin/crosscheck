@@ -1,11 +1,9 @@
 <h4>Log in</h4>
 <div class="full-row">
-    <div class="list-group-item">
-        {{input value=email type="email" placeholder="Email" class="form-control no-border"}}
-    </div>
-    <div class="list-group-item">
-        {{input value=password type="password" placeholder="Password" class="form-control no-border"}}
-    </div>
+    {{input value=email type="email" placeholder="Email" class="login-input"}}
+    {{input value=password type="password" placeholder="Password" class="login-input"}}
+</div>
+<div class="full-row">
     {{async-button 
         default="Log in"
         pending="Logging in..." 

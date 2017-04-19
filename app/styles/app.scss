@@ -13,7 +13,6 @@ html {
   background-color: rgb(246, 246, 246);
 }
 
-
 .container {
   @include grid-container;
 
@@ -24,7 +23,6 @@ html {
     padding: 8px 0;
 
     .logo img {
-      // width: 100%;
       width: 55px;
       display: block;
       margin: 0 auto;
@@ -49,10 +47,6 @@ html {
     height: 100%;
     text-align: center;
 
-    ul {
-      // padding-bottom: 15px;
-    }
-
     li {
       font-size: 1.5em;
     }
@@ -63,6 +57,12 @@ html {
 
     .full-row {
       @include grid-column(12);
+
+      .login-input {
+        text-align: center;
+        max-width: 280px;
+        @include margin(10px auto);
+      }
 
       .model-input {
         text-align: center;
@@ -163,7 +163,6 @@ html {
 	pointer-events: none;
 }
 
-
 .disaster-map, .volunteer-map {
     min-height: 300px;
     margin: 0 0 $base-spacing;
@@ -225,7 +224,6 @@ $site-list-thirds: (
   .site-status {
     @include grid-column(3, $site-list-quarters);
     @include grid-container($site-list-thirds);
-    // float: right;
 
     div {
       @include grid-column(1, $site-list-thirds);
@@ -278,8 +276,7 @@ $site-list-thirds: (
 
   background-color: $card-background;
   border: $card-border;
-  // border-radius: $base-border-radius;
-
+  
   // box-shadow: 0 10px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   box-shadow: 0 38px 43px rgba(0,0,0,.05);  
   cursor: pointer;
