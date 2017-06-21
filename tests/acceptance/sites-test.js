@@ -5,7 +5,7 @@ import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance'
 import disasterPage from 'crosscheck/tests/pages/disaster';
 import sitePage from 'crosscheck/tests/pages/site';
 import checkinPage from 'crosscheck/tests/pages/checkin';
-import { authenticateSession } from 'crosscheck/tests/helpers/ember-simple-auth';
+// import { authenticateSession } from 'crosscheck/tests/helpers/ember-simple-auth';
 
 const { Service } = Ember;
 

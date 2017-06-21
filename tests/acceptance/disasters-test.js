@@ -1,11 +1,21 @@
-import { test } from 'qunit';
+import { test, skip } from 'qunit';
 import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance';
 import page from 'crosscheck/tests/pages/disaster';
-import { authenticateSession } from 'crosscheck/tests/helpers/ember-simple-auth';
+import unstubFirebase from '../helpers/unstub-firebase';
+import startFirebaseApp from '../helpers/start-firebase-app';
+import { stubValidationSession } from 'crosscheck/tests/helpers/torii';
 
-moduleForAcceptance('Acceptance | disasters');
+moduleForAcceptance('Acceptance | disasters', {
+	beforeEach() {
+		startFirebaseApp();
+	},
+	afterEach() {
+		unstubFirebase();
+		destroyApp(application);
+	}
+});
 
-test('visiting /disasters, unauthenticated', function(assert) {
+skip('visiting /disasters, unauthenticated', function(assert) {
   visit('/');
   andThen(() => {
     assert.equal(currentURL(), '/');
@@ -14,7 +24,8 @@ test('visiting /disasters, unauthenticated', function(assert) {
 });
 
 test('visiting /disasters, no disasters', function(assert) {
-  authenticateSession(this.application);
+	stubValidationSession(this.application, { });
+
   visit('/');
 
   andThen(() => {
