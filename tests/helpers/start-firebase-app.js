@@ -20,4 +20,4 @@ export default function startFirebaseApp(fixtures = { }) {
   // setup any fixture data and return instance
   replaceAppRef(application, createOfflineRef(fixtures));
   return application;
-});
+}

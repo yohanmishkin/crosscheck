@@ -3,7 +3,8 @@ import moduleForAcceptance from 'crosscheck/tests/helpers/module-for-acceptance'
 import page from 'crosscheck/tests/pages/disaster';
 import unstubFirebase from '../helpers/unstub-firebase';
 import startFirebaseApp from '../helpers/start-firebase-app';
-import { stubValidationSession } from 'crosscheck/tests/helpers/torii';
+import destroyApp from '../helpers/destroy-app';
+import { stubValidSession } from 'crosscheck/tests/helpers/torii';
 
 moduleForAcceptance('Acceptance | disasters', {
 	beforeEach() {
@@ -11,7 +12,7 @@ moduleForAcceptance('Acceptance | disasters', {
 	},
 	afterEach() {
 		unstubFirebase();
-		destroyApp(application);
+		destroyApp(this.application);
 	}
 });
 
@@ -24,7 +25,7 @@ skip('visiting /disasters, unauthenticated', function(assert) {
 });
 
 test('visiting /disasters, no disasters', function(assert) {
-	stubValidationSession(this.application, { });
+	stubValidSession(this.application, { });
 
   visit('/');
 

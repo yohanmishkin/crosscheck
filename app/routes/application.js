@@ -6,6 +6,7 @@ export default Ember.Route.extend({
         return this.get('session')
             .fetch()
             .catch((e) => {
+                debugger;
                 console.log(e);
                 this.transitionTo('login');
             });
